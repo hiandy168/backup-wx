@@ -1,0 +1,13 @@
+<view class="container-fluid">
+  <view wx:for="{{house_list}}" wx:key="{{id}}" wx:for-item="house" class="house-item">
+    <view class="house-img">
+      <image src="{{house.photo_url}}" class="img-responsive" bindtap="toSingle"></image>
+    </view>
+    <view class="house-meta">
+      <view class="house-name">{{house.name}}</view>
+      <view class="house-type">{{house.build_type}}</view>
+      <view class="house-price">{{house.price}}</view>
+      <view class="house-address">{{house.address}}</view>
+    </view>
+  </view>
+</view>

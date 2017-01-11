@@ -25,6 +25,7 @@ App({
     }
   },
   globalData:{
-    userInfo:null
+    userInfo: null,
+    siteUrl: 'http://www.junchao.test.91xiangju.com'
   }
 })
