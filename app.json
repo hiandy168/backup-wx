@@ -3,8 +3,7 @@
     "pages/index/index",
     "pages/logs/logs",
     "pages/commodity_house/list/list",
-    "pages/commodity_house/index/index"
-    "pages/logs/logs",
+    "pages/commodity_house/index/index",
     "pages/house/house"
   ],
   "window":{
