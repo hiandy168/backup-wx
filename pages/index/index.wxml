@@ -1,10 +1,115 @@
+
 <!--index.wxml-->
 <view class="container">
-  <view  bindtap="bindViewTap" class="userinfo">
-    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-    <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<scroll-view scroll-y="true" bindscrolltolower="getMore">
+  <view class="row row1">
+    <view class="bg">
+      <image src="https://ssl.malmam.com/xiangju-static/dfs/8/1436bf31e12e73/IMG_5826.JPG" mode="widthFix"></image>
+    </view>
+    <view class="bg2">
+    </view>
+    <text class="title">
+      再见，城市。 
+      你好，生活。
+    </text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
+  <view class="row row2">
+    <view class="row-item" bindtap="goto" data-id="1">
+      <view>
+        <image src="https://ssl.malmam.com/xiangju-static/dfs/7/1535b95e3183e6/loufang3.png" ></image>
+      </view>
+      <view>
+        <title>
+          楼房
+        </title>
+      </view>
+    </view>
+
+    <view class="row-item" bindtap="goto" data-id="2">
+      <view>
+        <image src="https://ssl.malmam.com/xiangju-static/dfs/9/1535ba7149df2a/nongminfang3.png"></image>
+      </view>
+      <view>
+        <title>
+          农民房
+        </title>
+      </view>
+    </view>
+
+    <!--<view class="row-item" bindtap="goto" data-id="3">
+      <view>
+        <image src="https://ssl.malmam.com/xiangju-static/dfs/9/1535cac370e934/kongfang3.png"></image>
+      </view>
+      <view>
+        <title>
+          我有空房
+        </title>
+      </view>
+    </view>-->
+
+    <view class="row-item" bindtap="showqr" data-id="4">
+      <view>
+        <image src="https://ssl.malmam.com/xiangju-static/dfs/9/1535bca6ae1d32/gongzhonghao3.png"></image>
+      </view>
+      <view>
+        <title>
+          公众号
+        </title>
+      </view>
+    </view>
+  </view>
+
+  <view class="row row3">
+    <view class="tab tab1 clearfix" wx:if="{{loupan}}">
+      <button class="btn-focus btn btn1" bindtap="changeList" data-type="1">
+        楼盘
+      </button>
+      <button class="btn" bindtap="changeList" data-type="2">
+         农民房
+      </button>
+    </view>
+
+    <view class="tab tab1 clearfix" wx:if="{{!loupan}}">
+      <button class="btn btn1" bindtap="changeList" data-type="1">
+        楼盘
+      </button>
+      <button class="btn-focus btn" bindtap="changeList" data-type="2">
+         农民房
+      </button>
+    </view>
+  </view>
+
+  <view class="row row4">
+  
+    <view class="list list1" wx:if="{{loupan}}" >
+      <view class="item" wx:for="{{list1}}">
+        <image src="{{item.photo_url}}" mode="widthFix"></image>
+        <view class="bg"></view>
+        <text class="title1 title">{{item.name}}</text>
+        <text class="title2 title">{{item.address}}</text>
+        <text class="title3 title">{{item.price}}</text>
+
+      </view>
+
+    </view>
+    
+    <view class="list list2" wx:if="{{!loupan}}">
+    <view class="item f_{{index%2 == 0 ? 'left':'right'}}" wx:for="{{list2}}">
+        
+        <image class="bgi" src="{{item.photo}}" mode="aspectFill"></image>
+        <image class="pbg" src="https://ssl.malmam.com/xiangju-static/dfs/5/153c729514a34e/price_img.png" mode="aspectFill"></image>
+        <text class="title2 title">{{item.Price}}</text>
+        <image class="img3" src="https://ssl.malmam.com/xiangju-static/dfs/5/153c73d9cb9d67/house_icon.png"></image>
+        <text class="title1 title">{{item.Title}}</text>
+        <text class="title3 title">{{item.Area}}</text>
+        <text class="title4 title">{{item.Address}}</text>
+      </view>
+    </view>
+  </view>
+  </scroll-view>
+  <view class="qr" wx:if="{{showqr}}">
+    <view class="bg" bindtap="closeqr">
+    </view>
+    <image src="https://www.91xiangju.com/images/index/qr.jpg" mode="widthFix"></image>
   </view>
 </view>
