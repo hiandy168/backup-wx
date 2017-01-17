@@ -2,7 +2,8 @@
   "pages":[
     "pages/index/index",
     "pages/logs/logs",
-    "pages/commodity_house/list/list"
+    "pages/commodity_house/list/list",
+    "pages/commodity_house/index/index"
   ],
   "window":{
     "backgroundTextStyle": "light",
