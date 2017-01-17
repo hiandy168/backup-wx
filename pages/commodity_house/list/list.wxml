@@ -7,13 +7,13 @@
   </view>
   <view wx:if="{{isFilterExpanded}}" class="filter-expand">
     <view wx:for="{{decorationStandardFilter.filterRange}}" wx:key="id" wx:for-item="decoration_standard">
-      <view class="{{decorationStandardFilter.current == decoration_standard.id ? 'active' : ''}}">{{decoration_standard.name}}</view>
+      <view class="filter-item {{decorationStandardFilter.current == decoration_standard.id ? 'active' : ''}}">{{decoration_standard.name}}</view>
     </view>
     <view wx:for="{{roomTypesFilter.filterRange}}" wx:key="id" wx:for-item="room_type">
-      <view class="{{roomTypesFilter.current == room_type.id ? 'active' : ''}}">{{room_type.name}}</view>
+      <view class="filter-item {{roomTypesFilter.current == room_type.id ? 'active' : ''}}">{{room_type.name}}</view>
     </view>
     <view wx:for="{{stylesFilter.filterRange}}" wx:key="id" wx:for-item="style">
-      <view class="{{stylesFilter.current == style.id ? 'active' : ''}}">{{style.name}}</view>
+      <view class="filter-item {{stylesFilter.current == style.id ? 'active' : ''}}">{{style.name}}</view>
     </view>
   </view>
   <view wx:for="{{house_list}}" wx:key="id" wx:for-item="house" class="house-item">
@@ -22,10 +22,10 @@
     </view>
     <view class="house-meta">
       <view class="house-name">{{house.name}}</view>
-      <block class="house-type-price">
-        <view class="house-type">{{house.build_type}}</view>
-        <view class="house-price">{{house.price}}</view>
-      </block>
+      <view class="house-type-price">
+      <view class="house-type">{{house.build_type}}</view>
+      <view class="house-price">{{house.price}}</view>
+      </view>
       <view class="house-address">{{house.address}}</view>
     </view>
   </view>
