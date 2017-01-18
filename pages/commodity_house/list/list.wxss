@@ -10,6 +10,9 @@
   justify-content: center;
   width: 187.5rpx;
 }
+.filter .picker-arrow {
+  display: inline-flex
+}
 
 .filter-expand .filter-expand-shadow {
   position: fixed;
