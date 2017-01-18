@@ -1,19 +1,45 @@
-// pages/commodity_house/index/index.js
+var app = getApp();
+
 Page({
-  data:{},
-  onLoad:function(options){
-    // 页面初始化 options为页面跳转所带来的参数
+  data: {
+    houseMetaStatus: 0
+    //   house: {
+    //     name: '楼盘名称'
+    //   }
   },
-  onReady:function(){
-    // 页面渲染完成
+
+  onLoad: function (options) {
+    this.setData({
+      id: options.id
+    })
+
+    var that = this
+    wx.request({
+      url: app.globalData.siteUrl + '/api/commodity-house/index',
+      data: {
+        id: options.id,
+      },
+      header: {
+        'content-type': 'application/json'
+      },
+      success: function (res) {
+  //       console.log(res.data.data)
+        that.setData({
+          house: res.data.data
+        })
+      }
+    })
   },
-  onShow:function(){
-    // 页面显示
+
+  houseMetaShowDetail() {
+    this.setData({
+      houseMetaStatus: 1
+    })
   },
-  onHide:function(){
-    // 页面隐藏
-  },
-  onUnload:function(){
-    // 页面关闭
+
+  houseMetaHideDetail() {
+    this.setData({
+      houseMetaStatus: 0
+    })
   }
 })
