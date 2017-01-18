@@ -3,91 +3,169 @@ var app = getApp();
 
 Page({
   data: {
-    cityFilter: {
-      current: 1
-    },
-    categoryFilter: {
-      current: 0
-    },
-    priceRangeFilter: {
-      current: 0
-    },
-    decorationStandardFilter: {
-      current: 0
-    }, 
-    roomTypesFilter: {
-      current: 0
-    }, 
-    stylesFilter: {
-      current: 0
-    }, 
+    currentCity: 0,
+    currentCategory: 0,
+    currentPriceRange: 0,
+    currentDecoration: 0,
+    currentRoom: 0,
+    currentStyle: 0,
+    page: 1,
     isFilterExpanded: false
   },
 
-  bindFilterToggle()
-  {
+  bindFilterToggle() {
     this.setData({
       isFilterExpanded: !this.data.isFilterExpanded
     })
   },
 
-  toCommodityHouseIndex: function (event) {
+  toCommodityHouseIndex: function (e) {
     wx.navigateTo({
-      url: '../index/index?id=' + event.target.id
+      url: '../index/index?id=' + e.target.id
     })
   },
-  onLoad: function () {
+  onLoad: function (option) {
     var self = this
+    this.setData({
+      currentCity: option.city ? option.city : 0,
+      currentCategory: option.category ? option.category : 0,
+      currentPriceRange: option.price ? option.price : 0,
+      currentDecoration: option.decoration ? option.decoration : 0,
+      currentRoom: option.room ? option.room : 0,
+      currentStyle: option.style ? option.style : 0,
+    })
     wx.request({
       url: app.globalData.siteUrl + '/api/commodity-house/get-filter',
-      data: {},
       method: 'GET',
       success: function (res) {
+
         // console.log(res.data.data)
-        self.setData({ 
-          cityFilter: {
-            current: self.data.cityFilter.current,
-            filterRange: res.data.data.cities
+
+        self.setData({
+          cityFilterRange: res.data.data.cities,
+          categoryFilterRange: res.data.data.categories,
+          priceRangeFilterRange: res.data.data.price_ranges,
+          decorationFilterRange: res.data.data.decoration_standards,
+          roomFilterRange: res.data.data.room_types,
+          styleFilterRange: res.data.data.styles
+        });
+        // 异步
+        wx.request({
+          url: app.globalData.siteUrl + '/api/commodity-house/get-list',
+          data: {
+            region: self.data.cityFilterRange[[self.data.currentCity]].id,
+            cat: self.data.currentCategory,
+            price: self.data.currentPriceRange,
+            decoration: self.data.currentDecoration,
+            style: self.data.currentStyle,
+            pagesize: 10,
+            photo_cover_size: '300x300'
           },
-          categoryFilter: {
-            current: self.data.categoryFilter.current,
-            filterRange: res.data.data.categories
-          },
-          priceRangeFilter: {
-            current: self.data.priceRangeFilter.current,
-            filterRange: res.data.data.price_ranges
-          },
-          decorationStandardFilter: {
-            current: self.data.decorationStandardFilter.current,
-            filterRange: res.data.data.decoration_standards
-          },
-          roomTypesFilter: {
-            current: self.data.roomTypesFilter.current,
-            filterRange: res.data.data.room_types
-          },
-          stylesFilter: {
-            current: self.data.stylesFilter.current,
-            filterRange: res.data.data.styles
+          success: function (res) {
+
+            // console.log(res.data.data);
+
+            self.setData({
+              house_list: res.data.data
+            })
           }
         });
       },
     })
+
+  },
+
+  bindCityChange: function (e) {
+    this.setData({
+      currentCity: e.detail.value
+    })
+    this.filterChanged()
+  },
+
+  bindCategoryChange: function (e) {
+    this.setData({
+      currentCategory: e.detail.value
+    })
+    this.filterChanged()
+  },
+
+  bindPriceRangeChange: function (e) {
+    this.setData({
+      currentPriceRange: e.detail.value
+    })
+    this.filterChanged()
+  },
+
+  bindDecorationChange: function (e) {
+    this.setData({
+      currentDecoration: e.target.dataset.id
+    })
+  },
+
+  bindRoomChange: function (e) {
+    this.setData({
+      currentRoom: e.target.dataset.id
+    })
+  },
+
+  bindStyleChange: function (e) {
+    this.setData({
+      currentStyle: e.target.dataset.id
+    })
+  },
+
+  filterCancel() {
+    wx.redirectTo({
+      url: '/pages/commodity_house/list/list'
+    });
+  },
+
+  filterChanged() {
+    wx.redirectTo({
+      url: '/pages/commodity_house/list/list'
+      + '?city=' + this.data.currentCity
+      + '&category=' + this.data.currentCategory
+      + '&price=' + this.data.currentPriceRange
+      + '&decoration=' + this.data.currentDecoration
+      + '&room=' + this.data.currentRoom
+      + '&style=' + this.data.currentStyle,
+    });
+  },
+
+  getMore() {
+    var self = this
+    wx.showToast({
+      title: '载入中',
+      icon: 'loading',
+      duration: 60000
+    })
+    var self = this;
     wx.request({
       url: app.globalData.siteUrl + '/api/commodity-house/get-list',
       data: {
+        region: self.data.cityFilterRange[[self.data.currentCity]].id,
+        cat: self.data.currentCategory,
+        price: self.data.currentPriceRange,
+        decoration: self.data.currentDecoration,
+        style: self.data.currentStyle,
+        page: self.data.page +1,
         pagesize: 10,
         photo_cover_size: '300x300'
       },
       success: function (res) {
-        console.log(res.data.data);
+        // console.log(res.data.data);
+        var new_house_list = self.data.house_list.concat(res.data.data)
         self.setData({
-          house_list: res.data.data
+          house_list: new_house_list,
+          page: self.data.page + 1
         })
+      },
+      fail: function () {
+        console.log("获取数据失败");
+      },
+      complete: function () {
+        wx.hideToast();
       }
     })
-  },
-
-  filterChange() {
-    alert(1);
   }
 })
