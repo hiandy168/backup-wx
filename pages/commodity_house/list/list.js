@@ -26,14 +26,6 @@ Page({
   },
   onLoad: function (option) {
     var self = this
-    this.setData({
-      currentCity: option.city ? option.city : 0,
-      currentCategory: option.category ? option.category : 0,
-      currentPriceRange: option.price ? option.price : 0,
-      currentDecoration: option.decoration ? option.decoration : 0,
-      currentRoom: option.room ? option.room : 0,
-      currentStyle: option.style ? option.style : 0,
-    })
     wx.request({
       url: app.globalData.siteUrl + '/api/commodity-house/get-filter',
       method: 'GET',
@@ -115,21 +107,53 @@ Page({
   },
 
   filterCancel() {
-    wx.redirectTo({
-      url: '/pages/commodity_house/list/list'
+    this.setData({
+      currentCity: 0,
+      currentCategory: 0,
+      currentPriceRange: 0,
+      currentDecoration: 0,
+      currentStyle: 0,
+      currentRoom: 0,
+      isFilterExpanded: false
     });
+    this.filterChanged()
   },
 
   filterChanged() {
-    wx.redirectTo({
-      url: '/pages/commodity_house/list/list'
-      + '?city=' + this.data.currentCity
-      + '&category=' + this.data.currentCategory
-      + '&price=' + this.data.currentPriceRange
-      + '&decoration=' + this.data.currentDecoration
-      + '&room=' + this.data.currentRoom
-      + '&style=' + this.data.currentStyle,
-    });
+    var self = this
+    wx.showToast({
+      title: '载入中',
+      icon: 'loading',
+      duration: 60000
+    })
+    var self = this;
+    wx.request({
+      url: app.globalData.siteUrl + '/api/commodity-house/get-list',
+      data: {
+        region: self.data.cityFilterRange[[self.data.currentCity]].id,
+        cat: self.data.currentCategory,
+        price: self.data.currentPriceRange,
+        decoration: self.data.currentDecoration,
+        style: self.data.currentStyle,
+        page: 1,
+        pagesize: 10,
+        photo_cover_size: '300x300'
+      },
+      success: function (res) {
+        // console.log(res.data.data);
+        var new_house_list = res.data.data
+        self.setData({
+          house_list: new_house_list,
+          page: self.data.page + 1
+        })
+      },
+      fail: function () {
+        console.log("获取数据失败");
+      },
+      complete: function () {
+        wx.hideToast();
+      }
+    })
   },
 
   getMore() {
@@ -148,7 +172,7 @@ Page({
         price: self.data.currentPriceRange,
         decoration: self.data.currentDecoration,
         style: self.data.currentStyle,
-        page: self.data.page +1,
+        page: self.data.page + 1,
         pagesize: 10,
         photo_cover_size: '300x300'
       },
