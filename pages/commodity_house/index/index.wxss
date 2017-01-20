@@ -1,8 +1,87 @@
-
-.house-meta {
-  max-height: 300rpx;
-  overflow: hidden;
+.container{
+  padding:0px;
+  background: #f7f7f7;
 }
-.house-meta .meta-value {
-  color: #bbb;
+.container .row{
+  margin: 30rpx;
+}
+.container .row .boxs{
+  background:#fff;
+  padding: 0rpx 0;
+}
+.container .row2 .box{
+  margin: 0rpx 30rpx;
+  border-bottom:1rpx solid #eee;
+  line-height:60rpx;
+  height:60rpx;
+}
+.container .row1{
+  width:100%;
+  height:37%;
+  margin:0rpx;
+  position: relative;
+}
+.container .row1 swiper{
+  height:100%;
+}
+.container .row1 image{
+  width:100%;
+}
+.container .row1 .indicator{
+  color:#fff;
+  position:absolute;
+  bottom:0rpx;
+  right:10rpx;
+}
+.container .row2{
+  width:100%;
+  
+}
+.container .row2 .box1{
+  font-size:40rpx;
+  border:0px;
+}
+.container .row2 .box2{
+  color:#888;
+  font-size:30rpx;
+}
+.container .row2 .box .fl{
+  float:left;
+  
+}
+.container .row2 .box2 .fl text{
+  font-size:32rpx;
+  color:#FFB160;
+}
+.container .row2 .box .fr{
+  float:right;
+}
+.container .row2 .detail .fl{
+  width: 25%;
+  color:#bbb;
+  font-size:24rpx;
+}
+.container .row2 .detail .fr{
+  width: 75%;
+  color:#0f0f0f;
+  font-size:24rpx;
+}
+.container .row2 .detail30{
+  color:#bbb;
+  font-size:24rpx;
+  text-align:center;
+}
+.container .row3{
+  width:100%;
+  margin-top:0rpx;
+}
+.container .row3 .boxs{
+  padding:20rpx 0;
+}
+.container .row3 .box{
+  margin:0rpx 30rpx;
+}
+.container .row .title{
+  font-size:32rpx;
+  color:#0f0f0f;
 }

@@ -82,7 +82,7 @@
   <view class="row row4">
   
     <view class="list list1" wx:if="{{loupan}}" >
-      <view class="item" wx:for="{{list1}}">
+      <view class="item" wx:for="{{list1}}" bindtap="gotohouse" data-id="{{item.id}}">
         <image src="{{item.photo_url}}" mode="widthFix"></image>
         <view class="bg"></view>
         <text class="title1 title">{{item.name}}</text>
