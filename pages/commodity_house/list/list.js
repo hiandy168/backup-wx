@@ -14,7 +14,7 @@ Page({
   },
 
   bindFilterToggle() {
-    this.setData({
+     this.setData({
       isFilterExpanded: !this.data.isFilterExpanded
     })
   },
@@ -120,13 +120,15 @@ Page({
   },
 
   filterChanged() {
+    this.setData({
+      isFilterExpanded: false
+    })
     var self = this
     wx.showToast({
       title: '载入中',
       icon: 'loading',
       duration: 60000
     })
-    var self = this;
     wx.request({
       url: app.globalData.siteUrl + '/api/commodity-house/get-list',
       data: {
