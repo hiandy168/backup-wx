@@ -4,7 +4,8 @@
     "pages/logs/logs",
     "pages/commodity_house/list/list",
     "pages/commodity_house/index/index",
-    "pages/house/house",
+    "pages/house/list/list",
+    "pages/house/index/index",
     "pages/test/test"
   ],
   "window":{

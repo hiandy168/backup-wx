@@ -1,6 +1,0 @@
-<view class="container">
-  
-  <view>
-  {{test}}
-  </view>
-</view>

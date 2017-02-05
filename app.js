@@ -26,6 +26,7 @@ App({
   },
   globalData:{
     userInfo: null,
-    siteUrl: 'https://www.91xiangju.com'
+    // siteUrl: 'https://91xiangju.com'
+    siteUrl: 'http://www.junchao.test.91xiangju.com'
   }
 })
