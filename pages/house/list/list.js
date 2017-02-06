@@ -4,7 +4,7 @@ var app = getApp();
 Page({
   data: {
     currentCity: 0,
-    currentDistance: 0,
+    currentCategory: 0,
     currentPriceRange: 0,
     currentDecoration: 0,
     currentRoom: 0,
@@ -27,7 +27,7 @@ Page({
   onLoad: function (option) {
     var self = this
     wx.request({
-      url: app.globalData.siteUrl + '/api/house/get-filter',
+      url: app.globalData.siteUrl + '/api/commodity-house/get-filter',
       method: 'GET',
       success: function (res) {
 
@@ -35,7 +35,7 @@ Page({
 
         self.setData({
           cityFilterRange: res.data.data.cities,
-          distanceFilterRange: res.data.data.categories,
+          categoryFilterRange: res.data.data.categories,
           priceRangeFilterRange: res.data.data.price_ranges,
           decorationFilterRange: res.data.data.decoration_standards,
           roomFilterRange: res.data.data.room_types,
@@ -46,7 +46,7 @@ Page({
           url: app.globalData.siteUrl + '/api/house/get-list-wx',
           data: {
             region: self.data.cityFilterRange[[self.data.currentCity]].id,
-            cat: self.data.currentDistance,
+            cat: self.data.currentCategory,
             price: self.data.currentPriceRange,
             decoration: self.data.currentDecoration,
             style: self.data.currentStyle,
@@ -55,7 +55,7 @@ Page({
           },
           success: function (res) {
 
-            // console.log(res.data.data);
+            console.log(res.data.data);
 
             self.setData({
               house_list: res.data.data
@@ -74,9 +74,9 @@ Page({
     this.filterChanged()
   },
 
-  bindDistanceChange: function (e) {
+  bindCategoryChange: function (e) {
     this.setData({
-      currentDistance: e.detail.value
+      currentCategory: e.detail.value
     })
     this.filterChanged()
   },
@@ -109,7 +109,7 @@ Page({
   filterCancel() {
     this.setData({
       currentCity: 0,
-      currentDistance: 0,
+      currentCategory: 0,
       currentPriceRange: 0,
       currentDecoration: 0,
       currentStyle: 0,
@@ -133,7 +133,7 @@ Page({
       url: app.globalData.siteUrl + '/api/house/get-list-wx',
       data: {
         region: self.data.cityFilterRange[[self.data.currentCity]].id,
-        cat: self.data.currentDistance,
+        cat: self.data.currentCategory,
         price: self.data.currentPriceRange,
         decoration: self.data.currentDecoration,
         style: self.data.currentStyle,
@@ -170,7 +170,7 @@ Page({
       url: app.globalData.siteUrl + '/api/house/get-list-wx',
       data: {
         region: self.data.cityFilterRange[[self.data.currentCity]].id,
-        distance: self.data.currentDistance,
+        cat: self.data.currentCategory,
         price: self.data.currentPriceRange,
         decoration: self.data.currentDecoration,
         style: self.data.currentStyle,
