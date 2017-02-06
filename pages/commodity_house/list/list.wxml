@@ -49,7 +49,7 @@
     </view>
   </view>
   <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="getMore" lower-threshold="50">
-    <view wx:for="{{house_list}}" wx:key="id" wx:for-item="house" class="house-item">
+    <view wx:for="{{house_list}}" wx:key="house.id" wx:for-item="house" class="house-item">
       <view class="house-img">
         <image src="{{house.photo_url}}" class="img-responsive" bindtap="toCommodityHouseIndex" id="{{house.id}}" />
       </view>
