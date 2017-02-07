@@ -18,6 +18,11 @@ Page({
         url: '/pages/commodity_house/list/list'
       });
     }
+    else if (type == 2) {
+      wx.navigateTo({
+        url: '/pages/house/list/list'
+      });
+    }
   },
   getList1: function(){
       wx.showToast({
