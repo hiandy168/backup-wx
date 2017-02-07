@@ -38,7 +38,7 @@ Page({
       method: 'GET',
       success: function (res) {
 
-        // console.log(res.data.data)
+         //console.log(res.data.data)
 
         self.setData({
           cityFilterRange: res.data.data.cities,

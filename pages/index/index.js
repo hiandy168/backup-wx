@@ -145,6 +145,21 @@ Page({
       showqr:true,
     });
   },
+  gotohouse: function(e){
+    var id = e.currentTarget.dataset.id;
+    wx.redirectTo({
+      url: '/pages/commodity_house/index/index?id='+id,
+      success: function(res){
+        // success
+      },
+      fail: function() {
+        // fail
+      },
+      complete: function() {
+        // complete
+      }
+    })
+  },
   onLoad: function () {
     this.getList1();
   }

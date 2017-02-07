@@ -1,5 +1,5 @@
 /**app.wxss**/
-
+@import "/utils/wxParse/wxParse.wxss";
 .container {
   display: flex;
   flex-direction: column;
@@ -24,4 +24,5 @@ page{
 .clearfix{
   overflow:hidden;
   _zoom:1;
+
  }
