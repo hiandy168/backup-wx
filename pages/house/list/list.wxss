@@ -1,3 +1,7 @@
+.container-flex {
+  font-size: 14px;
+}
+
 .filter {
   padding-top: 20rpx;
   padding-bottom: 0;
