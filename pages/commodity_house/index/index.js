@@ -1,6 +1,9 @@
 var WxParse = require('../../../utils/wxParse/wxParse.js');
 var app = getApp();
 
+var ga = require("../../../utils/ga.js");
+var HitBuilders = ga.HitBuilders;
+
 Page({
   data: {
     houseMetaStatus: 0,
@@ -18,6 +21,11 @@ Page({
     });
   },
   onLoad: function (options) {
+    // 获取那个Tracker实例
+    var t = getApp().getTracker();
+    t.setScreenName('commodity_house_index');
+    t.send(new HitBuilders.ScreenViewBuilder().build());
+
     this.setData({
       id: options.id
     })
@@ -27,8 +35,6 @@ Page({
         duration: 60000
       })
     var that = this
-    var test = '<div>我是HTML代码</div>';
-    WxParse.wxParse('description', 'html', test , that,0);
     wx.request({
       url: app.globalData.siteUrl + '/api/commodity-house/index',
       data: {
@@ -38,10 +44,16 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-  //       console.log(res.data.data)
+  
         that.setData({
           house: res.data.data
         });
+        var data = that.data.house.description;
+        console.log(data);
+        
+        //data = data.replace(/&quot;/g,';');
+        data = '';
+        WxParse.wxParse('description', 'html', data , that,0);
 
       },
       complete: function() {

@@ -85,3 +85,6 @@
   font-size:32rpx;
   color:#0f0f0f;
 }
+.container .row3 .box2{
+  border:1px solid red;
+}

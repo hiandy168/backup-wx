@@ -1,5 +1,18 @@
+var ga = require("/utils/ga.js");
+var GoogleAnalytics = ga.GoogleAnalytics;
 //app.js
 App({
+  tracker: null,
+  getTracker: function () {
+      if (!this.tracker) {
+            // 初始化GoogleAnalytics Tracker
+            this.tracker = GoogleAnalytics.getInstance(this)
+                            .setAppName('乡居网别墅排屋')
+                            .setAppVersion('1.0.0')
+                            .newTracker('UA-90097818-3'); //用你的 Tracking ID 代替
+                            }
+        return this.tracker;
+    },
   onLaunch: function () {
     //调用API从本地缓存中获取数据
     var logs = wx.getStorageSync('logs') || []

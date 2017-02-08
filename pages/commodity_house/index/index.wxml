@@ -1,3 +1,4 @@
+<import src="../../../utils/wxParse/wxParse.wxml"/>
 <view class="container">
   <view class="row row1 imgs">
     <swiper indicator-dots="{{indicatorDots}}"
