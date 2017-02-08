@@ -1,5 +1,6 @@
 /**app.wxss**/
 @import "/utils/wxParse/wxParse.wxss";
+
 .container {
   display: flex;
   flex-direction: column;
@@ -12,6 +13,13 @@
   padding-right: 20rpx;
   font-size: 16px;
   color: #2a2a2a;
+}
+
+.container-grid {
+  padding-left: 25rpx;
+  padding-right: 25rpx;
+  color: #2a2a2a;
+  font-size: 16px;
 }
 
 .img-responsive {

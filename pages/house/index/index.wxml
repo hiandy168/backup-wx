@@ -1,2 +1,68 @@
-<!--pages/house/index/index.wxml-->
-<text>pages/house/index/index.wxml</text>
+
+<!--图片-->
+<swiper class="slider" indicator-dots="false" autoplay="true" interval="5000" duration="1000">
+  <block wx:for="{{house.photos}}">
+    <swiper-item>
+      <image src="{{item}}" class="slider-item" />
+    </swiper-item>
+  </block>
+</swiper>
+
+<!--信息-->
+<view class="container-grid">
+  <view class="id">编号: {{10000 + house.id}}</view>
+  <view class="title">{{house.title}}</view>
+  <view class="price">价格:
+    <view class="price-string">{{house.price_string}}</view>
+  </view>
+
+  <!--item-->
+  <view class="item">
+    <view class="item-label">位于: </view>
+    <view class="item-text">{{house.address_string}}</view>
+  </view>
+  <view class="item">
+    <view class="item-label">距离: </view>
+    <view class="item-text">
+      <view wx:for="{{house.distance_to_cities}}" wx:key="id" wx:for-item="distance" class="distance">{{distance}}</view>
+    </view>
+  </view>
+  <view class="item">
+    <view class="item-label">占地: </view>
+    <view class="item-text">{{house.land_area_string}}</view>
+  </view>
+  <view class="item">
+    <view class="item-label">房屋: </view>
+    <view class="item-text">
+      <view wx:for="{{house.rooms}}" wx:key="id" wx:for-item="room" class="room">{{room}}</view>
+    </view>
+  </view>
+  <view class="item two-per-line">
+    <view class="item-label">年代: </view>
+    <view class="item-text">{{house.build_year_string}}</view>
+  </view>
+  <view class="item two-per-line">
+    <view class="item-label">状态: </view>
+    <view class="item-text">{{house.status_string}}</view>
+  </view>
+  <view class="item two-per-line">
+    <view class="item-label">签约对象: </view>
+    <view class="item-text">{{house.contract_object_string}}</view>
+  </view>
+  <view class="item two-per-line">
+    <view class="item-label">出让方式: </view>
+    <view class="item-text">{{house.sell_type_string}}</view>
+  </view>
+
+  <!--房源特色-->
+  <view class="description">
+    <view class="description-label">房源特色</view>
+    <view class="description-text">{{house.description}}</view>
+  </view>
+</view>
+
+<!--电话-->
+<view class="call" bindtap="makePhoneCall">
+  <view class="text">咨询房源</view>
+  <view class="number">400 172 0200</view>
+</view>

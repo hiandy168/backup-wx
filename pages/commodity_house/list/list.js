@@ -147,6 +147,7 @@ Page({
         price: self.data.currentPriceRange,
         decoration: self.data.currentDecoration,
         style: self.data.currentStyle,
+        room: self.data.currentRoom,
         page: self.data.page + 1,
         pagesize: 10,
         photo_cover_size: '300x300'

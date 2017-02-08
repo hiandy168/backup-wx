@@ -1,4 +1,4 @@
-<view class="container">
+<view class="container-flex">
 
   <!--筛选项-->
   <view class="filter">

@@ -1,5 +1,3 @@
-.container{
-}
 .container scroll-view{
   height:100%;
 }
