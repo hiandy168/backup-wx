@@ -1,6 +1,4 @@
 
-var ga = require("../../../utils/ga.js");
-var HitBuilders = ga.HitBuilders;
 var app = getApp();
 
 Page({
@@ -8,11 +6,11 @@ Page({
   data: {
     house_list: [],
     currentCity: 0,
+    currentDistance: 0,
     currentCategory: 0,
     currentPriceRange: 0,
-    currentDecoration: 0,
-    currentRoom: 0,
-    currentStyle: 0,
+    currentResourceType: 0,
+    currentLandArea: 0,
     page: 0,
     isFilterExpanded: false
   },
@@ -25,7 +23,7 @@ Page({
   },
 
   // 前往index的链接
-  toCommodityHouseIndex: function (e) {
+  toHouseIndex: function (e) {
     wx.navigateTo({
       url: '../index/index?id=' + e.target.id
     })
@@ -33,28 +31,22 @@ Page({
 
   // 获取筛选条目, 获取房源列表
   onLoad: function (option) {
-
-    // 获取那个Tracker实例
-    var t = getApp().getTracker();
-    t.setScreenName('commodity_house_list');
-    t.send(new HitBuilders.ScreenViewBuilder().build());
-
     var self = this
 
     wx.request({
-      url: app.globalData.siteUrl + '/api/commodity-house/get-filter',
+      url: app.globalData.siteUrl + '/api/house/get-filter',
       method: 'GET',
       success: function (res) {
 
-         //console.log(res.data.data)
+        console.log(res.data.data)
 
         self.setData({
           cityFilterRange: res.data.data.cities,
+          distanceFilterRange: res.data.data.distances,
           categoryFilterRange: res.data.data.categories,
           priceRangeFilterRange: res.data.data.price_ranges,
-          decorationFilterRange: res.data.data.decoration_standards,
-          roomFilterRange: res.data.data.room_types,
-          styleFilterRange: res.data.data.styles
+          resourceTypeFilterRange: res.data.data.resource_types,
+          landAreaFilterRange: res.data.data.land_areas,
         });
         // 异步, 先获取筛选条件, 再获取房源列表
         self.getList()
@@ -65,6 +57,13 @@ Page({
   bindCityChange: function (e) {
     this.setData({
       currentCity: e.detail.value
+    })
+    this.filterChanged()
+  },
+
+  bindDistanceChange: function (e) {
+    this.setData({
+      currentDistance: e.detail.value
     })
     this.filterChanged()
   },
@@ -83,32 +82,28 @@ Page({
     this.filterChanged()
   },
 
-  bindDecorationChange: function (e) {
+  bindResourceTypeChange: function (e) {
     this.setData({
-      currentDecoration: e.target.dataset.id
+      currentResourceType: e.detail.value
     })
+    this.filterChanged()
   },
 
-  bindRoomChange: function (e) {
+  bindLandAreaChange: function (e) {
     this.setData({
-      currentRoom: e.target.dataset.id
+      currentLandArea: e.detail.value
     })
-  },
-
-  bindStyleChange: function (e) {
-    this.setData({
-      currentStyle: e.target.dataset.id
-    })
+    this.filterChanged()
   },
 
   filterCancel() {
     this.setData({
       currentCity: 0,
+      currentDistance: 0,
       currentCategory: 0,
       currentPriceRange: 0,
-      currentDecoration: 0,
-      currentStyle: 0,
-      currentRoom: 0,
+      currentResourceType: 0,
+      currentLandArea: 0,
       isFilterExpanded: false
     });
     this.filterChanged()
@@ -140,13 +135,14 @@ Page({
     })
 
     wx.request({
-      url: app.globalData.siteUrl + '/api/commodity-house/get-list',
+      url: app.globalData.siteUrl + '/api/house/get-list-wx',
       data: {
-        region: self.data.cityFilterRange[[self.data.currentCity]].id,
+        region: self.data.cityFilterRange[self.data.currentCity].id,
+        distance: self.data.distanceFilterRange[self.data.currentDistance].id,
         cat: self.data.currentCategory,
         price: self.data.currentPriceRange,
-        decoration: self.data.currentDecoration,
-        style: self.data.currentStyle,
+        land_area: self.data.currentLandArea,
+        resource_type: self.data.currentResourceType,
         page: self.data.page + 1,
         pagesize: 10,
         photo_cover_size: '300x300'
@@ -167,6 +163,7 @@ Page({
           house_list: new_house_list,
           page: self.data.page + 1
         })
+
       },
       fail: function () {
         console.log("获取数据失败");
