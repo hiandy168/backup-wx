@@ -2,6 +2,11 @@
 <!--筛选项-->
 <view class="filter">
 
+  <!--搜索输入框-->
+  <view class="search-input">
+    <input placeholder="搜索房源" bindconfirm="searchFormSubmit" auto-focus/>
+  </view>
+
   <!--城市-->
   <picker bindchange="bindCityChange" value="{{currentCity}}" range="{{cityFilterRange}}" range-key="name">
     <view class="picker">

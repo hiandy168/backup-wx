@@ -12,7 +12,8 @@ Page({
     currentRoom: 0,
     currentStyle: 0,
     page: 0,
-    isFilterExpanded: false
+    isFilterExpanded: false,
+    searchInputValue: ''
   },
 
   // 展开更多(切换)
@@ -134,6 +135,7 @@ Page({
     wx.request({
       url: app.globalData.siteUrl + '/api/commodity-house/get-list',
       data: {
+        s: self.data.searchInputValue,
         region: self.data.cityFilterRange[[self.data.currentCity]].id,
         cat: self.data.currentCategory,
         price: self.data.currentPriceRange,
@@ -168,5 +170,13 @@ Page({
         wx.hideToast();
       }
     })
-  }
+  },
+
+  searchFormSubmit: function (e) {
+    this.setData({
+      searchInputValue: e.detail.value
+    })
+
+    this.filterChanged()
+  },
 })
