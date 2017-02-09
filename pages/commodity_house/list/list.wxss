@@ -1,13 +1,10 @@
-.container-flex {
-  font-size: 14px;
-}
-
 .filter {
   padding-top: 20rpx;
   padding-bottom: 0;
   margin-bottom: 20rpx;
   width: 750rpx;
   border-bottom: 1px solid #eee;
+  font-size: 14px;
 }
 
 .filter .picker {
@@ -22,6 +19,7 @@
   top: 60rpx;
   left: 0;
   z-index: 20;
+  font-size: 14px;
 }
 
 .filter-expand .filter-expand-shadow {
