@@ -12,7 +12,8 @@ Page({
     currentResourceType: 0,
     currentLandArea: 0,
     page: 0,
-    isFilterExpanded: false
+    isFilterExpanded: false,
+    searchInputValue: ''
   },
 
   // 展开更多(切换)
@@ -38,7 +39,7 @@ Page({
       method: 'GET',
       success: function (res) {
 
-        // console.log(res.data.data)
+        console.log(res.data)
 
         self.setData({
           cityFilterRange: res.data.data.cities,
@@ -47,7 +48,8 @@ Page({
           priceRangeFilterRange: res.data.data.price_ranges,
           resourceTypeFilterRange: res.data.data.resource_types,
           landAreaFilterRange: res.data.data.land_areas,
-        });
+        })
+
         // 异步, 先获取筛选条件, 再获取房源列表
         self.getList()
       },
@@ -121,7 +123,7 @@ Page({
 
   // 瀑布流
   getMore() {
-    this.getList();
+    this.getList()
   },
 
   // 获取房源列表, 包括初始列表和后续加载
@@ -137,6 +139,7 @@ Page({
     wx.request({
       url: app.globalData.siteUrl + '/api/house/get-list-wx',
       data: {
+        keyword: self.data.searchInputValue,
         region: self.data.cityFilterRange[self.data.currentCity].id,
         distance: self.data.distanceFilterRange[self.data.currentDistance].id,
         cat: self.data.currentCategory,
@@ -148,16 +151,16 @@ Page({
         photo_cover_size: '300x300'
       },
       success: function (res) {
-        // console.log(res.data.data);
 
-        // 列表被重置
-        if (self.data.page == 0) {
-          var new_house_list = res.data.data
-        }
-        // 列表未重置, 添加到之前列表尾部
-        else {
-          var new_house_list = self.data.house_list.concat(res.data.data)
-        }
+        console.log(res.data)
+        console.log(res.data.data)
+
+
+        if (self.data.page == 0)
+          var new_house_list = res.data.data // 列表被重置
+        else
+          var new_house_list = self.data.house_list.concat(res.data.data) // 列表未重置, 添加到之前列表尾部
+
 
         self.setData({
           house_list: new_house_list,
@@ -172,5 +175,13 @@ Page({
         wx.hideToast();
       }
     })
-  }
+  },
+
+  searchFormSubmit: function (e) {
+    this.setData({
+      searchInputValue: e.detail.value
+    })
+
+    this.filterChanged()
+  },
 })

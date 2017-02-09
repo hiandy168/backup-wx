@@ -1,57 +1,66 @@
-<view class="container-flex">
 
-  <!--筛选项-->
-  <view class="filter">
+<!--筛选项-->
+<view class="filter">
 
-    <!--城市-->
-    <picker bindchange="bindCityChange" value="{{currentCity}}" range="{{cityFilterRange}}" range-key="name">
-      <view class="picker">
-        {{cityFilterRange[currentCity].name}}
-      </view>
-    </picker>
-
-    <!--距离-->
-    <picker bindchange="bindDistanceChange" value="{{currentDistance}}" range="{{distanceFilterRange}}" range-key="name">
-      <view class="picker">
-        {{distanceFilterRange[currentDistance].name}}
-      </view>
-    </picker>
-
-    <!--特色-->
-    <picker bindchange="bindCategoryChange" value="{{currentCategory}}" range="{{categoryFilterRange}}" range-key="name">
-      <view class="picker">
-        {{categoryFilterRange[currentCategory].name}}
-      </view>
-    </picker>
-    <view class="picker filter-toggle" bindtap="bindFilterToggle">更多</view>
-
-    <!--展开更多-->
-    <block wx:if="{{isFilterExpanded}}">
-
-      <!--价格-->
-      <picker class="filter-expand" bindchange="bindPriceRangeChange" value="{{currentPriceRange}}" range="{{priceRangeFilterRange}}" range-key="name">
-        <view class="picker">
-          {{priceRangeFilterRange[currentPriceRange].name}}
-        </view>
-      </picker>
-
-      <!--占地-->
-      <picker class="filter-expand" bindchange="bindLandAreaChange" value="{{currentLandArea}}" range="{{landAreaFilterRange}}" range-key="name">
-        <view class="picker">
-          {{landAreaFilterRange[currentLandArea].name}}
-        </view>
-      </picker>
-
-      <!--产权-->
-      <picker class="filter-expand" bindchange="bindResourceTypeChange" value="{{currentResourceType}}" range="{{resourceTypeFilterRange}}" range-key="name">
-        <view class="picker">
-          {{resourceTypeFilterRange[currentResourceType].name}}
-        </view>
-      </picker>
-    </block>
+  <!--搜索输入框-->
+  <view class="search-input">
+    <input placeholder="搜索房源" bindconfirm="searchFormSubmit" auto-focus/>
   </view>
 
-  <!--房源列表-->
+  <!--城市-->
+  <picker bindchange="bindCityChange" value="{{currentCity}}" range="{{cityFilterRange}}" range-key="name">
+    <view class="picker">
+      {{cityFilterRange[currentCity].name}}
+    </view>
+  </picker>
+
+  <!--距离-->
+  <picker bindchange="bindDistanceChange" value="{{currentDistance}}" range="{{distanceFilterRange}}" range-key="name">
+    <view class="picker">
+      {{distanceFilterRange[currentDistance].name}}
+    </view>
+  </picker>
+
+  <!--特色-->
+  <picker bindchange="bindCategoryChange" value="{{currentCategory}}" range="{{categoryFilterRange}}" range-key="name">
+    <view class="picker">
+      {{categoryFilterRange[currentCategory].name}}
+    </view>
+  </picker>
+  <view class="picker filter-toggle" bindtap="bindFilterToggle">更多</view>
+</view>
+
+<!--展开更多-->
+<view class="filter-expand" wx:if="{{isFilterExpanded}}">
+
+  <!--价格-->
+  <picker class="filter-expand-section" bindchange="bindPriceRangeChange" value="{{currentPriceRange}}" range="{{priceRangeFilterRange}}" range-key="name">
+    <view class="picker">
+      {{priceRangeFilterRange[currentPriceRange].name}}
+    </view>
+  </picker>
+
+  <!--占地-->
+  <picker class="filter-expand-section" bindchange="bindLandAreaChange" value="{{currentLandArea}}" range="{{landAreaFilterRange}}" range-key="name">
+    <view class="picker">
+      {{landAreaFilterRange[currentLandArea].name}}
+    </view>
+  </picker>
+
+  <!--产权-->
+  <picker class="filter-expand-section" bindchange="bindResourceTypeChange" value="{{currentResourceType}}" range="{{resourceTypeFilterRange}}" range-key="name">
+    <view class="picker">
+      {{resourceTypeFilterRange[currentResourceType].name}}
+    </view>
+  </picker>
+
+  <!--清除条件-->
+  <view class="filter-cancel-btn" bindtap="filterCancel">清除条件</view>
+</view>
+<view class="filter-border-bottom"></view>
+
+<!--房源列表-->
+<view class="container-grid">
   <scroll-view scroll-y="true" style="height: 100%" bindscrolltolower="getMore" lower-threshold="50">
     <view wx:for="{{house_list}}" wx:key="house.id" wx:for-item="house" class="house-item">
       <view class="house-img">

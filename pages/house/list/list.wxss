@@ -1,20 +1,51 @@
-.container-flex {
+.filter {
+  width: 750rpx;
   font-size: 14px;
 }
 
-.filter {
-  padding-top: 20rpx;
-  padding-bottom: 0;
-  margin-bottom: 20rpx;
+.filter .search-input {
   width: 750rpx;
-  border-bottom: 1px solid #eee;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+  background-color: #eee;
 }
 
-.filter .picker {
+.filter .search-input input {
+  width: 700rpx;  
+  border-radius: 5rpx;
+  padding: 5rpx 10rpx;
+  background-color: #fff;
+}
+
+.filter-expand {
+  position: fixed;
+  top: 180rpx;
+  left: 0;
+  width: 750rpx;
+  padding-top: 30rpx;
+  z-index: 20;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.filter .picker, .filter-expand .picker {
   float: left;
   width: 187.5rpx;
   height: 60rpx;
   text-align: center;
+}
+
+.filter-expand .filter-cancel-btn {
+  clear: both;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  background-color: #ddd;
+  text-align: center;
+}
+
+.filter-border-bottom {
+  margin-bottom: 20rpx;
+  border-bottom: 1px solid #ddd;
 }
 
 .house-item {
