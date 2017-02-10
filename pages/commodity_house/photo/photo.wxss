@@ -1,0 +1,108 @@
+.current-type {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 750rpx;
+  height: 60rpx;
+  border-bottom: 1px solid #ddd;
+  background-color: #fff;
+  font-size: 14px;
+}
+
+.gallery {
+  margin-top: 60rpx;
+  padding-left: 21rpx;
+  padding-right: 21rpx;
+}
+
+.gallery .photo {
+  display: inline-block;
+  width: 216rpx;
+  height: 216rpx;
+  margin-left: 10rpx;
+  margin-right: 10rpx;
+}
+
+.gallery .photo image {
+  /*不设置会出现滚动条*/
+  width: 211rpx;
+  height: 211rpx;
+}
+
+.type-picker {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 750rpx;
+  border-top: 1px solid #ddd;
+  padding: 5rpx 21rpx;
+  background-color: #fff;
+}
+
+.type-picker .type-picker-title {
+  height: 50rpx;
+  line-height: 50rpx;
+  color: #ddd;
+  font-size: 14px;
+}
+
+.type-picker swiper, .type-picker .type-page {
+  height: 200rpx;
+  padding-bottom: 10rpx;
+}
+
+.type-picker .type-item {
+  position: relative;
+  display: inline-block;
+  width: 206rpx;
+  height: 206rpx;
+  padding-left: 15rpx;
+  padding-right: 15rpx;
+}
+
+.type-picker .type-item-img {
+  width: 200rpx;
+  height: 200rpx;
+}
+
+.type-picker .type-item-name, .type-picker .type-item-bg {
+  position: absolute;
+  bottom: 5rpx;
+  left: 15rpx;
+  width: 200rpx;
+  height: 30rpx;
+  padding-top: 5rpx;
+  padding-bottom: 5rpx;
+  z-index: 99;
+  font-size: 15px;
+  text-align: center;
+}
+
+.type-picker .type-item-bg {
+  z-index: 10;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.type-picker .type-item-name {
+  z-index: 20;
+  color: #fff;
+}
+
+.zoom-in {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 100%;
+  background-color: #fff;
+  color: #000;
+}
+
+.zoom-in swiper, .zoom-in image {
+  width: 750rpx;
+  height: 100%;
+}

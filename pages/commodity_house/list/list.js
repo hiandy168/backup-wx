@@ -24,6 +24,7 @@ Page({
 
   // 前往index的链接
   toCommodityHouseIndex: function (e) {
+    // console.log(e)
     wx.navigateTo({
       url: '../index/index?id=' + e.target.id
     })

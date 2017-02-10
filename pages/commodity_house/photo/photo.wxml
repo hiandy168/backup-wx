@@ -1,0 +1,39 @@
+
+<!--当前类型提示-->
+<view class="current-type">{{photo_types[currentType].name}}</view>
+
+<!--当前类型浏览-->
+<view class="gallery">
+  <view wx:for="{{photos[currentType].data}}" wx:key="id" wx:for-item="photo" class="photo">
+    <image mode="aspectFill" src="{{photo.url}}" bindtap="zoomIn" data-id="{{photo.id}}" />
+  </view>
+</view>
+
+<!--类型选择-->
+<view class="type-picker">
+  <view class="type-picker-title">楼盘相册</view>
+  <swiper>
+    <block wx:for="{{type_keys}}" wx:key="id1" wx:for-item="type_page">
+      <swiper-item class="type-page">
+        <block wx:for="{{type_page}}" wx:key="id2" wx:for-item="type_key">
+          <view class="type-item" bindtap="changeType">
+            <image class="type-item-img" mode="aspectFill" src="{{photos[type_key].data[0].url}}" data-id="{{type_key}}" />
+            <view class="type-item-name">{{photos[type_key].name}}</view>
+            <view class="type-item-bg"></view>
+          </view>
+        </block>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<!--放大图-->
+<view wx:if="{{isZoomIn}}" class="zoom-in" bindtap="zoomOut">
+  <swiper current="{{currentPhoto}}">
+    <block wx:for="{{urls_extract}}" wx:key="id3" wx:for-item="photo">
+      <swiper-item class="type-page">
+        <image mode="aspectFit" src="{{photo.url}}" />
+      </swiper-item>
+    </block>
+  </swiper>
+</view>

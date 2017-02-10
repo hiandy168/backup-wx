@@ -4,6 +4,7 @@
     "pages/logs/logs",
     "pages/commodity_house/list/list",
     "pages/commodity_house/index/index",
+    "pages/commodity_house/photo/photo",
     "pages/house/list/list",
     "pages/house/index/index",
     "pages/test/test"
