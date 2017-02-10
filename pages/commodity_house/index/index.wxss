@@ -1,6 +1,6 @@
 view{
-  overflow: visible;
-  word-break: normal;
+  overfclow: visible;
+  wsord-break: normal;
 }
 .container{
   padding:0px;
@@ -39,7 +39,6 @@ view{
 }
 .container .row2{
   width:100%;
-  
 }
 .container .row2 .box1{
   font-size:40rpx;
@@ -93,6 +92,7 @@ view{
 }
 .container .row3 .box2{
   display:block;
+  
 }
 .container .row3 .box2 .wxParse-image{
   
@@ -114,5 +114,19 @@ width:100%;
   margin:0rpx 30rpx;
 }
 .container .row4 .title{
+  margin-bottom:20rpx;
+}
+.container .row{
+  width:100%;
+  margin-top:0rpx;
+
+}
+.container .row .boxs{
+  padding:20rpx 0;
+}
+.container .row .box{
+  margin:0rpx 30rpx;
+}
+.container .row .title{
   margin-bottom:20rpx;
 }

@@ -57,7 +57,7 @@ Page({
       success: function (res) {
         
         var arr = gps.GPS.bd_decrypt(res.data.data.lat,res.data.data.lng);
-        console.log(res.data.data.name);
+        
         that.setData({
           house: res.data.data,
           markers: [{
@@ -73,9 +73,9 @@ Page({
         var data = that.data.house.description;
         //console.log(data);
         data = data.replace(/&quot;/g,';');
-        //data = '';
+        data = '';
         WxParse.wxParse('description', 'html', data , that,15);
-
+        
       },
       complete: function() {
         wx.hideToast();
@@ -88,7 +88,7 @@ Page({
       success: function(res) {
         console.log(res.windowHeight);
         that.setData({
-          row1_height: res.windowHeight * 0.37 
+          row1_height: res.windowHeight * 0.37
         });
       }
     })
