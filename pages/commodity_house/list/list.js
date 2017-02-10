@@ -2,7 +2,6 @@
 var app = getApp();
 
 Page({
-
   data: {
     house_list: [],
     currentCity: 0,

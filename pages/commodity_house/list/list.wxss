@@ -113,6 +113,12 @@
   height: 240rpx;
 }
 
+.house-item .house-img image {
+  /*不设置会有滚动条*/
+  width: 235rpx;
+  height: 235rpx;
+}
+
 .house-item .house-meta {
   position: relative;
   float: left;
