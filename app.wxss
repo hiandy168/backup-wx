@@ -18,6 +18,8 @@
 .container-grid {
   padding-left: 25rpx;
   padding-right: 25rpx;
+  height: 100%;
+  width: 100%;
   color: #2a2a2a;
   font-size: 16px;
 }
