@@ -1,3 +1,7 @@
+view{
+  overflow: visible;
+  word-break: normal;
+}
 .container{
   padding:0px;
   background: #f7f7f7;
@@ -17,7 +21,7 @@
 }
 .container .row1{
   width:100%;
-  height:37%;
+  
   margin:0rpx;
   position: relative;
 }
@@ -74,6 +78,7 @@
 .container .row3{
   width:100%;
   margin-top:0rpx;
+  
 }
 .container .row3 .boxs{
   padding:20rpx 0;
@@ -84,7 +89,30 @@
 .container .row .title{
   font-size:32rpx;
   color:#0f0f0f;
+  margin-bottom: 20rpx;
 }
 .container .row3 .box2{
-  border:1px solid red;
+  display:block;
+}
+.container .row3 .box2 .wxParse-image{
+  
+width:100%;
+}
+.container .row3 .box2 .wxParse-p{
+  margin-bottom:20rpx;
+  line-height:20rpx;
+}
+.container .row4{
+  width:100%;
+  margin-top:0rpx;
+
+}
+.container .row4 .boxs{
+  padding:20rpx 0;
+}
+.container .row4 .box{
+  margin:0rpx 30rpx;
+}
+.container .row4 .title{
+  margin-bottom:20rpx;
 }
