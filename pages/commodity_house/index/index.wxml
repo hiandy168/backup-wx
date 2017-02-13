@@ -1,5 +1,6 @@
+<import src="../../../utils/wxParse/wxParse.wxml"/>
 <view class="container">
-  <view class="row row1 imgs">
+  <view class="row row1 imgs" style="height:{{row1_height}}px;">
     <swiper indicator-dots="{{indicatorDots}}"
       autoplay="true" interval="5000" duration="300" current="{{current}}" bindchange="photochange">
         <block wx:for="{{house.photos}}">
@@ -104,6 +105,18 @@
       </view>  
     </view>
   </view>
+  
+  <view class="row row5">
+    <view class="boxs">
+      <view class="box box1 title">
+        楼盘相册
+      </view>
+      <view class="box box2">
+        
+      </view>
+    </view>
+  </view>
+
 
   <view class="row row3">
     <view class="boxs">
@@ -115,5 +128,17 @@
       </view>
     </view>
   </view>
+
+  <view class="row row4">
+    <view class="boxs">
+      <view class="box box1 title">
+        楼盘地图及周边
+      </view>
+      <view class="box box2">
+        <map id="map" longitude="{{house.lng}}" latitude="{{house.lat}}" scale="14" controls="{{}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: {{row1_height}}px;"></map>
+      </view>
+    </view>
+  </view>
+
 
 </view>

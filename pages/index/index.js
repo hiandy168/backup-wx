@@ -1,3 +1,6 @@
+var ga = require("../../utils/ga.js");
+var HitBuilders = ga.HitBuilders;
+
 //index.js
 //获取应用实例
 var app = getApp()
@@ -167,5 +170,10 @@ Page({
   },
   onLoad: function () {
     this.getList1();
+
+    // 获取那个Tracker实例
+    var t = getApp().getTracker();
+    t.setScreenName('index');
+    t.send(new HitBuilders.ScreenViewBuilder().build());
   }
 })

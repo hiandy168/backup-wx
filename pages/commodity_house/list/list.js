@@ -1,4 +1,6 @@
 
+var ga = require("../../../utils/ga.js");
+var HitBuilders = ga.HitBuilders;
 var app = getApp();
 
 Page({
@@ -32,6 +34,12 @@ Page({
 
   // 获取筛选条目, 获取房源列表
   onLoad: function (option) {
+
+    // 获取那个Tracker实例
+    var t = getApp().getTracker();
+    t.setScreenName('commodity_house_list');
+    t.send(new HitBuilders.ScreenViewBuilder().build());
+
     var self = this
 
     wx.request({
