@@ -16,9 +16,9 @@
 <view class="room-picker">
   <block wx:for="{{rooms}}" wx:key="id21" wx:for-item="room">
     <view class="room">
-    <view class="room-area">{{room.Habitable}} {{room.Area}}平(建筑面积)</view>
+      <view class="room-area">{{room.Habitable}} {{room.Area}}平(建筑面积)</view>
       <view class="room-price">价格: {{room.Price}}</view>
-      <image mode="aspectFit" src="{{room.PhotoCoverUrl}}" />
+      <image mode="aspectFit" src="{{room.PhotoCoverUrl}}" bindtap="zoomIn" data-index="{{room.PhotoIndex}}" />
     </view>
   </block>
 </view>

@@ -24,25 +24,34 @@ Page({
       success: function (res) {
         console.log(res.data.data);
 
+        var i = 0;
+        res.data.data.forEach(function (room) {
+          room.PhotoIndex = i;
+          room.PhotoUrls.forEach(function () {
+            i++
+          });
+        })
+
         self.setData({
           rooms: res.data.data
         })
 
       },
-      
+
       complete: function () {
         wx.hideToast();
       }
     })
   },
 
+// 点击放大
   zoomIn: function (e) {
-    // console.log(e.target.dataset.id)
+    // console.log(e.target.dataset)
     var self = this
 
     this.setData({
       isZoomIn: true,
-      currentPhoto: e.target.dataset.id
+      currentPhoto: e.target.dataset.index
     })
   },
 
