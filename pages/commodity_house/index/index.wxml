@@ -100,7 +100,7 @@
       </view>
     </view>
   </view>
-  <view class="row row6">
+  <view class="row row6" wx:if="{{hasRoom}}">
     <view class="boxs">
       <view class="box box1 title">
         楼盘户型图

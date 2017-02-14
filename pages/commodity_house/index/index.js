@@ -14,6 +14,7 @@ Page({
     photo_index: 1,
     show_detail: false,
     row1_height: 0,
+    hasRoom: false,
     //   house: {
     //     name: '楼盘名称'
     //   }
@@ -117,9 +118,14 @@ Page({
         id: options.id
       },
       success: function (res) {
-        that.setData({
-          rooms: res.data.data
-        })
+        // console.log(res.data.data)
+
+        if (res.data.data.length > 0) {
+          that.setData({
+            hasRoom: true,
+            rooms: res.data.data
+          })
+        }
       }
     })
 
