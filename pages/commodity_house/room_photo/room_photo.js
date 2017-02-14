@@ -29,11 +29,7 @@ Page({
         })
 
       },
-
-      fail: function () {
-        console.log("获取数据失败");
-      },
-
+      
       complete: function () {
         wx.hideToast();
       }

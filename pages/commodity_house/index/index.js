@@ -23,7 +23,7 @@ Page({
   // 前往照片页面
   toPhotoPage: function (e) {
     wx.navigateTo({
-      url: '../photo/photo?id=' + this.data.id
+      url: '../photo/photo?id=' + this.data.id + '&type=' + e.target.dataset.id
     })
   },
 
@@ -96,6 +96,7 @@ Page({
       }
     })
 
+    // 获取照片
     wx.request({
       url: app.globalData.siteUrl + '/api/commodity-house/photo',
       data: {
@@ -105,6 +106,19 @@ Page({
         that.setData({
           photos: res.data.data.urls,
           type_keys: res.data.data.type_keys
+        })
+      }
+    })
+
+    // 获取户型图
+    wx.request({
+      url: app.globalData.siteUrl + '/api/commodity-house/room-photo',
+      data: {
+        id: options.id
+      },
+      success: function (res) {
+        that.setData({
+          rooms: res.data.data
         })
       }
     })

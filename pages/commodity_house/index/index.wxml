@@ -100,6 +100,20 @@
       </view>
     </view>
   </view>
+  <view class="row row6">
+    <view class="boxs">
+      <view class="box box1 title">
+        楼盘户型图
+      </view>
+      <view class="box box2">
+        <view wx:for="{{rooms}}" wx:key="id2" wx:for-item="room" class="room">
+          <view class="room-area">{{room.Habitable}} {{room.Area}}平(建筑面积)</view>
+          <view class="room-price">价格: {{room.Price}}</view>
+          <image mode="aspectFit" src="{{room.PhotoCoverUrl}}" bindtap="toRoomPhotoPage" />
+        </view>
+      </view>
+    </view>
+  </view>
   <view class="row row5">
     <view class="boxs">
       <view class="box box1 title">

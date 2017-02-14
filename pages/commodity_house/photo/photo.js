@@ -10,6 +10,11 @@ Page({
   },
 
   onLoad: function (options) {
+
+    this.setData({
+      currentType: options.type
+    })
+    
     var self = this
 
     wx.showToast({
