@@ -1,144 +1,146 @@
-<import src="../../../utils/wxParse/wxParse.wxml"/>
+<import src="../../../utils/wxParse/wxParse.wxml" />
 <view class="container">
   <view class="row row1 imgs" style="height:{{row1_height}}px;">
-    <swiper indicator-dots="{{indicatorDots}}"
-      autoplay="true" interval="5000" duration="300" current="{{current}}" bindchange="photochange">
-        <block wx:for="{{house.photos}}">
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="300" current="{{current}}" bindchange="photochange">
+      <block wx:for="{{house.photos}}">
         <swiper-item>
-          <image src="{{item}}" class="slide-image" mode="aspectFill"/>
+          <image src="{{item}}" class="slide-image" mode="aspectFill" />
         </swiper-item>
       </block>
-
     </swiper>
-
-      <view class="indicator">
+    <view class="indicator">
       {{photo_index}}/{{house.photos.length}}
-      </view>
+    </view>
   </view>
   <view class="row row2">
     <view class="boxs">
       <view class="box box1">
-      {{house.name}}
+        {{house.name}}
       </view>
       <view class="box box2 clearfix">
-        <view class="fl">售价<text>{{house.price_string}}</text></view>
+        <view class="fl">售价
+          <text>{{house.price_string}}</text>
+        </view>
         <view class="fr">{{house.status_string}}</view>
       </view>
       <view class="box detail detail1 clearfix" wx:if="{{house.company_name}}">
         <view class="fl">开发商</view>
         <view class="fr">{{house.company_name}}</view>
-      </view>   
+      </view>
       <view class="box detail detail2 clearfix" wx:if="{{house.address}}">
         <view class="fl">楼盘地址</view>
         <view class="fr">{{house.address}}</view>
-      </view> 
+      </view>
       <view class="box detail detail3 clearfix" wx:if="{{house.feature}}">
         <view class="fl">项目特色</view>
         <view class="fr">{{house.feature}}</view>
-      </view>    
+      </view>
       <view class="box detail detail4 clearfix" wx:if="{{house.sales_address && show_detail}}">
         <view class="fl">售楼处地址</view>
         <view class="fr">{{house.sales_address}}</view>
-      </view>  
+      </view>
       <view class="box detail detail5 clearfix" wx:if="{{house.build_type && show_detail}}">
         <view class="fl">建筑类型</view>
         <view class="fr">{{house.build_type}}</view>
-      </view> 
+      </view>
       <view class="box detail detail6 clearfix" wx:if="{{house.green_rate && show_detail}}">
         <view class="fl">绿化率</view>
         <view class="fr">{{house.green_rate}}</view>
-      </view>   
+      </view>
       <view class="box detail detail7 clearfix" wx:if="{{house.area_covered && show_detail}}">
         <view class="fl">占地面积</view>
         <view class="fr">{{house.area_covered}}</view>
-      </view>  
+      </view>
       <view class="box detail detail8 clearfix" wx:if="{{house.built_up_area && show_detail}}">
         <view class="fl">建筑面积</view>
         <view class="fr">{{house.built_up_area}}</view>
-      </view>  
+      </view>
       <view class="box detail detail9 clearfix" wx:if="{{house.volume_ratio && show_detail}}">
         <view class="fl">容积率</view>
         <view class="fr">{{house.volume_ratio}}</view>
-      </view>  
+      </view>
       <view class="box detail detail10 clearfix" wx:if="{{house.decoration_standard && show_detail}}">
         <view class="fl">装修标准</view>
         <view class="fr">{{house.decoration_standard}}</view>
-      </view>  
+      </view>
       <view class="box detail detail11 clearfix" wx:if="{{house.property_right && show_detail}}">
         <view class="fl">产权年限</view>
         <view class="fr">{{house.property_right}}</view>
-      </view>  
-
+      </view>
       <view class="box detail detail12 clearfix" wx:if="{{house.planning_households && show_detail}}">
         <view class="fl">规划户数</view>
         <view class="fr">{{house.planning_households}}</view>
-      </view>  
-
+      </view>
       <view class="box detail detail6 clearfix" wx:if="{{house.property_company && show_detail}}">
         <view class="fl">物业公司</view>
         <view class="fr">{{house.property_company}}</view>
-      </view>  
+      </view>
       <view class="box detail detail6 clearfix" wx:if="{{house.property_fee && show_detail}}">
         <view class="fl">物业费</view>
         <view class="fr">{{house.property_fee}}</view>
-      </view>  
+      </view>
       <view class="box detail detail6 clearfix" wx:if="{{house.parking && show_detail}}">
         <view class="fl">车位数</view>
         <view class="fr">{{house.parking}}</view>
-      </view>  
+      </view>
       <view class="box detail detail6 clearfix" wx:if="{{house.parking_ratio && show_detail}}">
         <view class="fl">车位配比</view>
         <view class="fr">{{house.parking_ratio}}</view>
-      </view>  
-
+      </view>
       <view class="box detail detail6 clearfix" wx:if="{{house.heating_method && show_detail}}">
         <view class="fl">供暖方式</view>
         <view class="fr">{{house.heating_method}}</view>
-      </view>  
-
+      </view>
       <view class="box detail detail6 clearfix" wx:if="{{house.hydropower_class && show_detail}}">
         <view class="fl">水电类别</view>
         <view class="fr">{{house.hydropower_class}}</view>
-      </view>  
+      </view>
       <view class="box detail detail30 " bindtap="showmore">
         <text>{{show_detail?'收起':'展开显示更多'}}</text>
-      </view>  
+      </view>
     </view>
   </view>
-  
   <view class="row row5">
     <view class="boxs">
       <view class="box box1 title">
         楼盘相册
       </view>
       <view class="box box2">
-        
+        <swiper>
+          <block wx:for="{{type_keys}}" wx:key="id1" wx:for-item="type_page">
+            <swiper-item class="type-page">
+              <block wx:for="{{type_page}}" wx:key="id2" wx:for-item="type_key">
+                <view class="type-item" bindtap="changeType">
+                  <image class="type-item-img" mode="aspectFill" src="{{photos[type_key].data[0].url}}" bindtap="toPhotoPage" data-id="{{type_key}}" />
+                  <view class="type-item-name">{{photos[type_key].name}}</view>
+                  <view class="type-item-bg"></view>
+                </view>
+              </block>
+            </swiper-item>
+          </block>
+        </swiper>
       </view>
     </view>
   </view>
-
-
   <view class="row row3">
     <view class="boxs">
       <view class="box box1 title">
         详情
       </view>
       <view class="box box2">
-        <template is="wxParse" data="{{wxParseData:description.nodes}}"/>
+        <template is="wxParse" data="{{wxParseData:description.nodes}}" />
       </view>
     </view>
   </view>
-
   <view class="row row4">
     <view class="boxs">
       <view class="box box1 title">
         楼盘地图及周边
       </view>
       <view class="box box2">
-        <map id="map" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" scale="14" controls="{{}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location style="width: 100%; height: {{row1_height}}px;"></map>
+        <map id="map" longitude="{{markers[0].longitude}}" latitude="{{markers[0].latitude}}" scale="14" controls="{{}}" bindcontroltap="controltap" markers="{{markers}}" bindmarkertap="markertap" polyline="{{polyline}}" bindregionchange="regionchange" show-location
+        style="width: 100%; height: {{row1_height}}px;"></map>
       </view>
     </view>
   </view>
-
-
 </view>
