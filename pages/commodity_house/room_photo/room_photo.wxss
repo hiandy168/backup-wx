@@ -1,0 +1,34 @@
+/* pages/commodity_house/room_photo/room_photo.wxss */
+
+
+.zoom-in {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 750rpx;
+  height: 100%;
+  background-color: #fff;
+  color: #000;
+}
+
+.zoom-in swiper, .zoom-in image {
+  width: 750rpx;
+  height: 100%;
+}
+
+.room-picker .room {
+  display: inline-block;
+  width: 365rpx;
+  height: 365rpx;
+  padding: 5rpx;
+  font-size: 14px;
+  text-align: center;
+}
+
+.room-picker .room image {
+  width: 365rpx;
+  height: 300rpx;
+}

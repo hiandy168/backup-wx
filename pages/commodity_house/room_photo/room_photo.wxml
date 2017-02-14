@@ -1,0 +1,24 @@
+
+<!--放大图-->
+<view wx:if="{{isZoomIn}}" class="zoom-in" bindtap="zoomOut">
+  <swiper current="{{currentPhoto}}">
+    <block wx:for="{{rooms}}" wx:key="id11" wx:for-item="room">
+      <block wx:for="{{room.PhotoUrls}}" wx:key="id12" wx:for-item="photo">
+        <swiper-item class="">
+          <image mode="aspectFit" src="{{photo.Url}}" />
+        </swiper-item>
+      </block>
+    </block>
+  </swiper>
+</view>
+
+<!--浏览图-->
+<view class="room-picker">
+  <block wx:for="{{rooms}}" wx:key="id21" wx:for-item="room">
+    <view class="room">
+    <view class="room-area">{{room.Habitable}} {{room.Area}}平(建筑面积)</view>
+      <view class="room-price">价格: {{room.Price}}</view>
+      <image mode="aspectFit" src="{{room.PhotoCoverUrl}}" />
+    </view>
+  </block>
+</view>

@@ -5,6 +5,7 @@
     "pages/commodity_house/list/list",
     "pages/commodity_house/index/index",
     "pages/commodity_house/photo/photo",
+    "pages/commodity_house/room_photo/room_photo",
     "pages/house/list/list",
     "pages/house/index/index",
     "pages/test/test"
