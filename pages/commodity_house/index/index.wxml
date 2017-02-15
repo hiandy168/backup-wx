@@ -3,16 +3,18 @@
   <view class="row row1 imgs" style="height:{{row1_height}}px;">
     <swiper indicator-dots="{{indicatorDots}}"
       autoplay="true" interval="5000" duration="300" current="{{current}}" bindchange="photochange">
-        <block wx:for="{{house.photos}}">
-        <swiper-item>
-          <image src="{{item}}" class="slide-image" mode="aspectFill"/>
-        </swiper-item>
+        <block wx:for="{{house.photos}}" wx:for-item="arr">
+        <block wx:for="{{arr}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" mode="aspectFill"/>
+          </swiper-item>
+        </block>
       </block>
 
     </swiper>
 
       <view class="indicator">
-      {{photo_index}}/{{house.photos.length}}
+      {{photo_index}}/{{photo_count}}
       </view>
   </view>
   <view class="row row2">
@@ -112,7 +114,17 @@
         楼盘相册
       </view>
       <view class="box box2">
-        
+        <scroll-view scroll-x="true" scroll-y="false">
+          <block wx:for="{{house.photos}}" wx:for-index="key" wx:for-item="arr">
+            <view class="scroll-item" bindtap="gotophoto" data-photo_name="{{key}}">
+              <image src="{{arr[0]}}" class="slide-image" mode="aspectFill"/>
+              <text>{{key}}</text>
+              <view class="bg"></view>
+
+            </view>
+           </block>
+        </scroll-view>
+
       </view>
     </view>
   </view>
