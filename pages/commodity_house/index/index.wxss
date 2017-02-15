@@ -186,6 +186,7 @@ view{
 .container .row6 {
   height: 330rpx;
   overflow: hidden;
+  padding-bottom: 10rpx;
   color: #666;
   font-size: 14px;
 }
