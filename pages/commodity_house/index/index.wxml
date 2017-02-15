@@ -1,16 +1,20 @@
 <import src="../../../utils/wxParse/wxParse.wxml" />
 <view class="container">
   <view class="row row1 imgs" style="height:{{row1_height}}px;">
-    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="300" current="{{current}}" bindchange="photochange">
-      <block wx:for="{{house.photos}}">
-        <swiper-item>
-          <image src="{{item}}" class="slide-image" mode="aspectFill" />
-        </swiper-item>
+    <swiper indicator-dots="{{indicatorDots}}"
+      autoplay="true" interval="5000" duration="300" current="{{current}}" bindchange="photochange">
+        <block wx:for="{{house.photos}}" wx:for-item="arr">
+        <block wx:for="{{arr}}">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image" mode="aspectFill"/>
+          </swiper-item>
+        </block>
       </block>
     </swiper>
-    <view class="indicator">
-      {{photo_index}}/{{house.photos.length}}
-    </view>
+
+      <view class="indicator">
+      {{photo_index}}/{{photo_count}}
+      </view>
   </view>
   <view class="row row2">
     <view class="boxs">

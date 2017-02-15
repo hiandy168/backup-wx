@@ -12,6 +12,7 @@ Page({
     houseMetaStatus: 0,
     id: 0,
     photo_index: 1,
+    photo_count:0,
     show_detail: false,
     row1_height: 0,
     hasRoom: false,
@@ -86,8 +87,16 @@ Page({
           }]
         });
         var data = that.data.house.description;
-        //console.log(data);
-        data = data.replace(/&quot;/g, ';');
+
+        var tmp = 0;
+        for(var i in that.data.house.photos){
+            tmp += that.data.house.photos[i].length;
+        }
+
+        that.setData({
+          photo_count: tmp,
+        });
+        data = data.replace(/&quot;/g,';');
         data = '';
         WxParse.wxParse('description', 'html', data, that, 15);
 
@@ -161,6 +170,11 @@ Page({
     this.setData({
       houseMetaStatus: 0
     })
+  },
+  gotophoto: function(e){
+    var name = e.currentTarget.dataset.photo_name;
+
+
   }
 
 })
