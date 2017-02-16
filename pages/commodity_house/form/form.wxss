@@ -1,0 +1,27 @@
+/* pages/commodity_house/form/form.wxss */
+
+.container-grid {
+    font-size: 20px;
+}
+
+.title {
+    border-bottom: 1px solid #ddd;
+    margin-top: 30rpx;
+    margin-bottom: 30rpx;
+    padding-bottom: 20rpx;
+    font-size: 40px;
+}
+
+input, .date {
+    width: 700rpx;
+    height: 60rpx;
+    line-height: 60rpx;
+    border: 1px solid #f2f2f2;
+    margin-top: 10rpx;
+    margin-bottom: 30rpx;
+}
+
+button {
+    margin: 20rpx 0 0 0;
+    width: 700rpx;
+}
