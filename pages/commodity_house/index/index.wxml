@@ -27,7 +27,7 @@
         </view>
         <view class="fr">{{house.status_string}}</view>
       </view>
-      <view class="box box3 clearfix" wx:if="{{house.has_activity}}" ontap="gotoreg" data-type="3" data-houseid="{{house.id}}">
+      <view class="box box3 clearfix" wx:if="{{house.has_activity}}" ontap="gotoreg" data-type="1" data-houseid="{{house.id}}">
         <view >
           【{{house.activity_string}}，点击领取】
         </view>
@@ -173,7 +173,7 @@
 
     <view class="row row7" >
       <view class="boxs">
-          <view class="box box1" bindtap="gotoreg" data-type="1" data-houseid="{{house.id}}">
+          <view class="box box1" bindtap="gotoreg" data-type="3" data-houseid="{{house.id}}">
             预约看房
           </view>
           <view class="box box2" bindtap="call">

@@ -2,9 +2,9 @@
 
   <!--页面标题, 根据 type 而异-->
   <view class="title">
-    <block wx:if="{{type == 1}}">预约看房</block>
+    <block wx:if="{{type == 3}}">预约看房</block>
     <block wx:if="{{type == 2}}">设置降价通知</block>
-    <block wx:if="{{type == 3}}">领取红包</block>
+    <block wx:if="{{type == 1}}">领取红包</block>
   </view>
   <form bindsubmit="formSubmit">
 
@@ -32,7 +32,7 @@
     </view>
 
     <!--时间-->
-    <picker wx:if="{{type == 2 || type == 3}}" name="time" mode="date" start="{date_start}}" value="{{date_value}}" bindchange="dateChange">
+    <picker wx:if="{{type == 3}}" name="time" mode="date" start="{date_start}}" value="{{date_value}}" bindchange="dateChange">
       <view>日期:</view>
       <view class="date">{{date_value}}</view>
     </picker>

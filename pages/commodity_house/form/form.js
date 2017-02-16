@@ -10,7 +10,7 @@ Page({
     var today = this.getTodayString()
 
     this.setData({
-      house_id: options.id,
+      house_id: options.house_id,
       type: options.type,
       date_start: today,
       date_value: today
@@ -29,7 +29,8 @@ Page({
     console.log(e.detail.value)
 
     var exception = this.validateForm(e.detail.value);
-    if (exception) {
+    // if (exception) {
+    if (0) {
       wx.showModal({
         title: '提交失败',
         content: exception,
@@ -41,14 +42,20 @@ Page({
 
     var self = this
     wx.request({
-      url: app.globalData.siteUrl + '/api/customer/add-customer-wx',
+      url: app.globalData.siteUrl + '/api/customer/add-customer',
       method: 'GET',
       data: e.detail.value,
       success: function (res) {
+        console.log(res.data)
         if (res.data.ret == 0) {
           self.showSuccessModal(res.data.msg)
         } else {
-          console.log(res.data.msg)
+          wx.showModal({
+            title: '提交失败',
+            content: res.data.msg,
+            showCancel: false,
+            confirmText: '好的'
+          })
         }
       },
     })
