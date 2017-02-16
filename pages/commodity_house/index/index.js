@@ -12,7 +12,7 @@ Page({
     houseMetaStatus: 0,
     id: 0,
     photo_index: 1,
-    photo_count:0,
+    photo_count: 0,
     show_detail: false,
     row1_height: 0,
     hasRoom: false,
@@ -41,6 +41,7 @@ Page({
       photo_index: e.detail.current + 1
     });
   },
+
   onLoad: function (options) {
 
     // 统计
