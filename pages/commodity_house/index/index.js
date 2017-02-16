@@ -175,6 +175,16 @@ Page({
     var name = e.currentTarget.dataset.photo_name;
 
 
-  }
+  },
+  gotoreg: function(e){
+    var type = e.currentTarget.dataset.type;
+    var houseid = e.currentTarget.dataset.houseid;
 
+    console.log(houseid);
+  },
+  call: function(){
+    wx.makePhoneCall({
+      phoneNumber:'4001720200'
+    });
+  }
 })

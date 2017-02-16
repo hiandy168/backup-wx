@@ -27,6 +27,11 @@
         </view>
         <view class="fr">{{house.status_string}}</view>
       </view>
+      <view class="box box3 clearfix" wx:if="{{house.has_activity}}" ontap="gotoreg" data-type="3" data-houseid="{{house.id}}">
+        <view >
+          【{{house.activity_string}}，点击领取】
+        </view>
+      </view>
       <view class="box detail detail1 clearfix" wx:if="{{house.company_name}}">
         <view class="fl">开发商</view>
         <view class="fr">{{house.company_name}}</view>
@@ -102,6 +107,10 @@
       <view class="box detail detail30 " bindtap="showmore">
         <text>{{show_detail?'收起':'展开显示更多'}}</text>
       </view>
+      <view class="reg clearfix " bindtap="gotoreg" data-type="2" data-houseid="{{house.id}}">
+        <image src="/../../../utils/images/notification.png" ></image>
+        <text> 降价、活动、优惠通知我</text>
+      </view>
     </view>
   </view>
   <view class="row row6" wx:if="{{hasRoom}}">
@@ -161,4 +170,19 @@
       </view>
     </view>
   </view>
+
+    <view class="row row7" >
+      <view class="boxs">
+          <view class="box box1 title" bindtap="gotoreg" data-type="1" data-houseid="{{house.id}}">
+            预约看房
+          </view>
+          <view class="box box2" bindtap="call">
+            电话咨询
+          </view>
+      </view>
+    </view>
+
+    <view class="row row8" >
+      
+    </view>
 </view>

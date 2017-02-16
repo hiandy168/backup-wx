@@ -89,7 +89,38 @@ view{
   font-size: 24rpx;
   text-align: center;
 }
+.container .row2 .reg image{
+  width:40rpx;
+  height:40rpx;
+  margin-top:10rpx;
+  float:left;
+  margin-left:50%;
+  left:-150rpx;
+  position:relative;
+}
+.container .row2 .reg text{
 
+  float:left;
+  position:relative;
+  left:-140rpx;
+}
+.container .row2 .reg{
+  text-align:center;
+  font-size:24rpx;
+  color:#FFCF9B;
+  line-height:60rpx;
+  
+}
+.container .row2 .box2{
+  border:0px;
+}
+.container .row2 .box3{
+  border:0px;
+  color:red;
+  font-size:24rpx;
+  line-height:30rpx;
+  
+}
 .container .row3 {
   width: 100%;
   margin-top: 0rpx;
@@ -258,4 +289,48 @@ view{
   background:#000;
   height:36rpx;
   opacity: 0.3;
+}
+
+.container .row7{
+  position:fixed;
+  bottom:-30rpx;
+  background:#fff;
+  left: -30rpx;
+  height: 80rpx;
+    line-height:80rpx;
+}
+.container .row7 .boxs {
+
+  margin:0px;
+  padding:0px;
+  height:100%;
+  font-size:40rpx;
+}
+.container .row7 .boxs .box{
+  display:inline-block;
+  width:50%;
+  text-align: center;
+  margin:0px;
+  padding:0px;
+  height:100%;
+}
+.container .row7 .boxs .box1{
+  display:inline-block;
+  width:50%;
+  background: #FFB160;
+  text-align:center;
+  height:100%;
+  color:#fff;
+}
+.container .row7 .boxs .box2{
+  display:inline-block;
+  width:50%;
+  text-align: center;
+  background:#FF4848;
+    height:100%;
+    color:#fff;
+}
+.container .row8{
+
+  height: 60rpx;
 }
