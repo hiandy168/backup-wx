@@ -90,14 +90,14 @@ Page({
         var data = that.data.house.description;
 
         var tmp = 0;
-        for(var i in that.data.house.photos){
-            tmp += that.data.house.photos[i].length;
+        for (var i in that.data.house.photos) {
+          tmp += that.data.house.photos[i].length;
         }
 
         that.setData({
           photo_count: tmp,
         });
-        data = data.replace(/&quot;/g,';');
+        data = data.replace(/&quot;/g, ';');
         data = '';
         WxParse.wxParse('description', 'html', data, that, 15);
 
@@ -172,20 +172,23 @@ Page({
       houseMetaStatus: 0
     })
   },
-  gotophoto: function(e){
+  gotophoto: function (e) {
     var name = e.currentTarget.dataset.photo_name;
 
 
   },
-  gotoreg: function(e){
+  
+  // 前往表单提交页面
+  gotoreg: function (e) {
     var type = e.currentTarget.dataset.type;
-    var houseid = e.currentTarget.dataset.houseid;
 
-    console.log(houseid);
+    wx.navigateTo({
+      url: '../form/form?house_id=' + this.data.id + '&type=' + type
+    })
   },
-  call: function(){
+  call: function () {
     wx.makePhoneCall({
-      phoneNumber:'4001720200'
+      phoneNumber: '4001720200'
     });
   }
 })
