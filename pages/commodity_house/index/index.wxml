@@ -173,7 +173,7 @@
 
     <view class="row row7" >
       <view class="boxs">
-          <view class="box box1 title" bindtap="gotoreg" data-type="1" data-houseid="{{house.id}}">
+          <view class="box box1" bindtap="gotoreg" data-type="1" data-houseid="{{house.id}}">
             预约看房
           </view>
           <view class="box box2" bindtap="call">

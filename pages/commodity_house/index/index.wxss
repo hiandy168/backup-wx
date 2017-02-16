@@ -1,4 +1,4 @@
-view{
+view {
   overflow: visible;
   word-break: normal;
 }
@@ -89,38 +89,41 @@ view{
   font-size: 24rpx;
   text-align: center;
 }
-.container .row2 .reg image{
-  width:40rpx;
-  height:40rpx;
-  margin-top:10rpx;
-  float:left;
-  margin-left:50%;
-  left:-150rpx;
-  position:relative;
-}
-.container .row2 .reg text{
 
-  float:left;
-  position:relative;
-  left:-140rpx;
+.container .row2 .reg image {
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 10rpx;
+  float: left;
+  margin-left: 50%;
+  left: -150rpx;
+  position: relative;
 }
-.container .row2 .reg{
-  text-align:center;
-  font-size:24rpx;
-  color:#FFCF9B;
-  line-height:60rpx;
-  
+
+.container .row2 .reg text {
+  float: left;
+  position: relative;
+  left: -140rpx;
 }
-.container .row2 .box2{
-  border:0px;
+
+.container .row2 .reg {
+  text-align: center;
+  font-size: 24rpx;
+  color: #ffcf9b;
+  line-height: 60rpx;
 }
-.container .row2 .box3{
-  border:0px;
-  color:red;
-  font-size:24rpx;
-  line-height:30rpx;
-  
+
+.container .row2 .box2 {
+  border: 0px;
 }
+
+.container .row2 .box3 {
+  border: 0px;
+  color: red;
+  font-size: 24rpx;
+  line-height: 30rpx;
+}
+
 .container .row3 {
   width: 100%;
   margin-top: 0rpx;
@@ -173,6 +176,7 @@ view{
 .container swiper {
   height: 100px;
 }
+
 .container .row5 .type-page {
   height: 200rpx;
   padding-bottom: 10rpx;
@@ -250,87 +254,91 @@ view{
 .container .row .title {
   margin-bottom: 20rpx;
 }
-.container .row5 .box2 scroll-view{
 
-    white-space: nowrap;
-    display: flex;
-    overflow-y:hidden;
+.container .row5 .box2 scroll-view {
+  white-space: nowrap;
+  display: flex;
+  overflow-y: hidden;
 }
-.container .row5 .box2 view{
-  display:inline-block;
-  position:relative;
+
+.container .row5 .box2 view {
+  display: inline-block;
+  position: relative;
 }
-.container .row5 .box2 image{
+
+.container .row5 .box2 image {
   width: 200rpx;
-  height:200rpx;
-  display:inline-block;
+  height: 200rpx;
+  display: inline-block;
   margin: 0px 10rpx;
   overflow: hidden;
+}
 
+.container .row5 .box2 view text {
+  display: inline-block;
+  position: absolute;
+  bottom: 0rpx;
+  left: 0rpx;
+  z-index: 999;
+  text-align: center;
+  width: 100%;
+  color: #fff;
 }
-.container .row5 .box2 view text{
-  display:inline-block;
-  position:absolute;
-  bottom:0rpx;
-  left:0rpx;
-  z-index:999;
-  text-align:center;
-  width:100%;
-  color:#fff;
-}
-.container .row5 .box2 .bg{
-  display:inline-block;
-  position:absolute;
-  bottom:0rpx;
-  left:10rpx;
-  z-index:998;
-  text-align:center;
-  width:200rpx;
-  background:#000;
-  height:36rpx;
+
+.container .row5 .box2 .bg {
+  display: inline-block;
+  position: absolute;
+  bottom: 0rpx;
+  left: 10rpx;
+  z-index: 998;
+  text-align: center;
+  width: 200rpx;
+  background: #000;
+  height: 36rpx;
   opacity: 0.3;
 }
 
-.container .row7{
-  position:fixed;
-  bottom:-30rpx;
-  background:#fff;
+.container .row7 {
+  position: fixed;
+  bottom: -30rpx;
+  background: #fff;
   left: -30rpx;
   height: 80rpx;
-    line-height:80rpx;
+  line-height: 80rpx;
 }
+
 .container .row7 .boxs {
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
+  font-size: 40rpx;
+}
 
-  margin:0px;
-  padding:0px;
-  height:100%;
-  font-size:40rpx;
-}
-.container .row7 .boxs .box{
-  display:inline-block;
-  width:50%;
+.container .row7 .boxs .box {
+  display: inline-block;
+  width: 50%;
   text-align: center;
-  margin:0px;
-  padding:0px;
-  height:100%;
+  margin: 0px;
+  padding: 0px;
+  height: 100%;
 }
-.container .row7 .boxs .box1{
-  display:inline-block;
-  width:50%;
-  background: #FFB160;
-  text-align:center;
-  height:100%;
-  color:#fff;
-}
-.container .row7 .boxs .box2{
-  display:inline-block;
-  width:50%;
-  text-align: center;
-  background:#FF4848;
-    height:100%;
-    color:#fff;
-}
-.container .row8{
 
+.row7 .box1, .row7 .box2 {
+  display: inline-block;
+  width: 50%;
+  text-align: center;
+  height: 100%;
+  color: #fff;
+}
+
+.row7 .box1 {
+  background-color: #FFB160;
+}
+
+.row7 .box2 {
+  background-color: #FF4848;
+}
+
+.container .row8 {
   height: 60rpx;
 }
