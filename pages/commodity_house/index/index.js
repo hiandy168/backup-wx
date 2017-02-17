@@ -1,24 +1,24 @@
-var WxParse = require('../../../utils/wxParse/wxParse.js');
 var app = getApp();
 
+// HTML 解析
+var WxParse = require('../../../utils/wxParse/wxParse.js');
+
+// Google Analysis
 var ga = require("../../../utils/ga.js");
 var HitBuilders = ga.HitBuilders;
 
+// 定位
 var gps = require("../../../utils/gps.js");
 
 Page({
   data: {
     markers: [],
-    houseMetaStatus: 0,
     id: 0,
     photo_index: 1,
     photo_count: 0,
     show_detail: false,
     row1_height: 0,
     hasRoom: false,
-    //   house: {
-    //     name: '楼盘名称'
-    //   }
   },
 
 
@@ -36,6 +36,7 @@ Page({
     })
   },
 
+  // 顶部图片自动切换
   photochange: function (e) {
     this.setData({
       photo_index: e.detail.current + 1
@@ -44,7 +45,7 @@ Page({
 
   onLoad: function (options) {
 
-    // 统计
+    // Google Analysis
     var t = getApp().getTracker();
     t.setScreenName('commodity_house_index');
     t.send(new HitBuilders.ScreenViewBuilder().build());
@@ -53,16 +54,15 @@ Page({
       id: options.id
     })
 
-    // 载入toast
+    /**
+     * 获取数据
+     */
+    var that = this
     wx.showToast({
       title: '载入中',
       icon: 'loading',
       duration: 60000
     })
-
-
-    // 获取数据
-    var that = this
     wx.request({
       url: app.globalData.siteUrl + '/api/commodity-house/index',
       data: {
@@ -72,11 +72,29 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
-
-        var arr = gps.GPS.bd_decrypt(res.data.data.lat, res.data.data.lng);
-
         that.setData({
           house: res.data.data,
+        })
+
+        // 顶部图片计数
+        var tmp = 0;
+        for (var i in that.data.house.photos) {
+          tmp += that.data.house.photos[i].length;
+        }
+        that.setData({
+          photo_count: tmp,
+        });
+
+        // 楼盘描述 HTML -> wxml 转换
+        var description = that.data.house.description;
+
+        description = description.replace(/&quot;/g, ';');
+        // 上线时使用
+        // WxParse.wxParse('description', 'html', description, that, 15);
+
+        // 地图定位标记
+        var arr = gps.GPS.bd_decrypt(res.data.data.lat, res.data.data.lng);
+        that.setData({
           markers: [{
             iconPath: "/utils/images/location.png",
             id: 0,
@@ -86,21 +104,7 @@ Page({
             width: 30,
             height: 30
           }]
-        });
-        var data = that.data.house.description;
-
-        var tmp = 0;
-        for (var i in that.data.house.photos) {
-          tmp += that.data.house.photos[i].length;
-        }
-
-        that.setData({
-          photo_count: tmp,
-        });
-        data = data.replace(/&quot;/g, ';');
-        data = '';
-        WxParse.wxParse('description', 'html', data, that, 15);
-
+        })
       },
       complete: function () {
         wx.hideToast();
@@ -139,7 +143,7 @@ Page({
       }
     })
 
-    // 高度计算
+    // 顶部图片高度计算
     wx.getSystemInfo({
       success: function (res) {
         console.log(res.windowHeight);
@@ -152,8 +156,8 @@ Page({
 
   },
 
-
-  showmore: function () {
+  // "展开显示更多"
+  showMore: function () {
     var show = this.data.show_detail;
 
     this.setData({
@@ -161,31 +165,20 @@ Page({
     });
   },
 
-  houseMetaShowDetail() {
-    this.setData({
-      houseMetaStatus: 1
-    })
-  },
-
-  houseMetaHideDetail() {
-    this.setData({
-      houseMetaStatus: 0
-    })
-  },
-  gotophoto: function (e) {
-    var name = e.currentTarget.dataset.photo_name;
-
-
-  },
-  
   // 前往表单提交页面
-  gotoreg: function (e) {
+  toRegister: function (e) {
     var type = e.currentTarget.dataset.type;
+    var data = {
+      'house_id': this.data.id,
+      'type': type
+    }
 
     wx.navigateTo({
-      url: '../form/form?house_id=' + this.data.id + '&type=' + type
+      url: '../form/form' + app.parseQueryString(data)
     })
   },
+
+  // "电话咨询"
   call: function () {
     wx.makePhoneCall({
       phoneNumber: '4001720200'
