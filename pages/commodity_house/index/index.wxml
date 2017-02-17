@@ -1,20 +1,16 @@
 <import src="../../../utils/wxParse/wxParse.wxml" />
 <view class="container">
   <view class="row row1 imgs" style="height:{{row1_height}}px;">
-    <swiper indicator-dots="{{indicatorDots}}"
-      autoplay="true" interval="5000" duration="300" current="{{current}}" bindchange="photochange">
-        <block wx:for="{{house.photos}}" wx:for-item="arr">
-        <block wx:for="{{arr}}">
-          <swiper-item>
-            <image src="{{item}}" class="slide-image" mode="aspectFill"/>
-          </swiper-item>
-        </block>
+    <swiper indicator-dots="{{indicatorDots}}" autoplay="true" interval="5000" duration="300" current="{{current}}" bindchange="photochange">
+      <block wx:for="{{photo_urls_array}}" wx:key="id1" wx:for-item="url">
+        <swiper-item>
+          <image src="{{url}}" class="slide-image" mode="aspectFill" />
+        </swiper-item>
       </block>
     </swiper>
-
-      <view class="indicator">
-      {{photo_index}}/{{photo_count}}
-      </view>
+    <view class="indicator">
+      {{photo_index}}/{{photos_count}}
+    </view>
   </view>
   <view class="row row2">
     <view class="boxs">
@@ -28,7 +24,7 @@
         <view class="fr">{{house.status_string}}</view>
       </view>
       <view class="box box3 clearfix" wx:if="{{house.has_activity}}" ontap="toRegister" data-type="1" data-houseid="{{house.id}}">
-        <view >
+        <view>
           【{{house.activity_string}}，点击领取】
         </view>
       </view>
@@ -44,102 +40,104 @@
         <view class="fl">项目特色</view>
         <view class="fr">{{house.feature}}</view>
       </view>
-      <view class="box detail detail4 clearfix" wx:if="{{house.sales_address && show_detail}}">
-        <view class="fl">售楼处地址</view>
-        <view class="fr">{{house.sales_address}}</view>
-      </view>
-      <view class="box detail detail5 clearfix" wx:if="{{house.build_type && show_detail}}">
-        <view class="fl">建筑类型</view>
-        <view class="fr">{{house.build_type}}</view>
-      </view>
-      <view class="box detail detail6 clearfix" wx:if="{{house.green_rate && show_detail}}">
-        <view class="fl">绿化率</view>
-        <view class="fr">{{house.green_rate}}</view>
-      </view>
-      <view class="box detail detail7 clearfix" wx:if="{{house.area_covered && show_detail}}">
-        <view class="fl">占地面积</view>
-        <view class="fr">{{house.area_covered}}</view>
-      </view>
-      <view class="box detail detail8 clearfix" wx:if="{{house.built_up_area && show_detail}}">
-        <view class="fl">建筑面积</view>
-        <view class="fr">{{house.built_up_area}}</view>
-      </view>
-      <view class="box detail detail9 clearfix" wx:if="{{house.volume_ratio && show_detail}}">
-        <view class="fl">容积率</view>
-        <view class="fr">{{house.volume_ratio}}</view>
-      </view>
-      <view class="box detail detail10 clearfix" wx:if="{{house.decoration_standard && show_detail}}">
-        <view class="fl">装修标准</view>
-        <view class="fr">{{house.decoration_standard}}</view>
-      </view>
-      <view class="box detail detail11 clearfix" wx:if="{{house.property_right && show_detail}}">
-        <view class="fl">产权年限</view>
-        <view class="fr">{{house.property_right}}</view>
-      </view>
-      <view class="box detail detail12 clearfix" wx:if="{{house.planning_households && show_detail}}">
-        <view class="fl">规划户数</view>
-        <view class="fr">{{house.planning_households}}</view>
-      </view>
-      <view class="box detail detail6 clearfix" wx:if="{{house.property_company && show_detail}}">
-        <view class="fl">物业公司</view>
-        <view class="fr">{{house.property_company}}</view>
-      </view>
-      <view class="box detail detail6 clearfix" wx:if="{{house.property_fee && show_detail}}">
-        <view class="fl">物业费</view>
-        <view class="fr">{{house.property_fee}}</view>
-      </view>
-      <view class="box detail detail6 clearfix" wx:if="{{house.parking && show_detail}}">
-        <view class="fl">车位数</view>
-        <view class="fr">{{house.parking}}</view>
-      </view>
-      <view class="box detail detail6 clearfix" wx:if="{{house.parking_ratio && show_detail}}">
-        <view class="fl">车位配比</view>
-        <view class="fr">{{house.parking_ratio}}</view>
-      </view>
-      <view class="box detail detail6 clearfix" wx:if="{{house.heating_method && show_detail}}">
-        <view class="fl">供暖方式</view>
-        <view class="fr">{{house.heating_method}}</view>
-      </view>
-      <view class="box detail detail6 clearfix" wx:if="{{house.hydropower_class && show_detail}}">
-        <view class="fl">水电类别</view>
-        <view class="fr">{{house.hydropower_class}}</view>
-      </view>
+      <block wx:if="{{show_detail}}">
+        <view class="box detail detail4 clearfix" wx:if="{{house.sales_address}}">
+          <view class="fl">售楼处地址</view>
+          <view class="fr">{{house.sales_address}}</view>
+        </view>
+        <view class="box detail detail5 clearfix" wx:if="{{house.build_type}}">
+          <view class="fl">建筑类型</view>
+          <view class="fr">{{house.build_type}}</view>
+        </view>
+        <view class="box detail detail6 clearfix" wx:if="{{house.green_rate}}">
+          <view class="fl">绿化率</view>
+          <view class="fr">{{house.green_rate}}</view>
+        </view>
+        <view class="box detail detail7 clearfix" wx:if="{{house.area_covered}}">
+          <view class="fl">占地面积</view>
+          <view class="fr">{{house.area_covered}}</view>
+        </view>
+        <view class="box detail detail8 clearfix" wx:if="{{house.built_up_area}}">
+          <view class="fl">建筑面积</view>
+          <view class="fr">{{house.built_up_area}}</view>
+        </view>
+        <view class="box detail detail9 clearfix" wx:if="{{house.volume_ratio}}">
+          <view class="fl">容积率</view>
+          <view class="fr">{{house.volume_ratio}}</view>
+        </view>
+        <view class="box detail detail10 clearfix" wx:if="{{house.decoration_standard}}">
+          <view class="fl">装修标准</view>
+          <view class="fr">{{house.decoration_standard}}</view>
+        </view>
+        <view class="box detail detail11 clearfix" wx:if="{{house.property_right}}">
+          <view class="fl">产权年限</view>
+          <view class="fr">{{house.property_right}}</view>
+        </view>
+        <view class="box detail detail12 clearfix" wx:if="{{house.planning_households}}">
+          <view class="fl">规划户数</view>
+          <view class="fr">{{house.planning_households}}</view>
+        </view>
+        <view class="box detail detail6 clearfix" wx:if="{{house.property_company}}">
+          <view class="fl">物业公司</view>
+          <view class="fr">{{house.property_company}}</view>
+        </view>
+        <view class="box detail detail6 clearfix" wx:if="{{house.property_fee}}">
+          <view class="fl">物业费</view>
+          <view class="fr">{{house.property_fee}}</view>
+        </view>
+        <view class="box detail detail6 clearfix" wx:if="{{house.parking}}">
+          <view class="fl">车位数</view>
+          <view class="fr">{{house.parking}}</view>
+        </view>
+        <view class="box detail detail6 clearfix" wx:if="{{house.parking_ratio}}">
+          <view class="fl">车位配比</view>
+          <view class="fr">{{house.parking_ratio}}</view>
+        </view>
+        <view class="box detail detail6 clearfix" wx:if="{{house.heating_method}}">
+          <view class="fl">供暖方式</view>
+          <view class="fr">{{house.heating_method}}</view>
+        </view>
+        <view class="box detail detail6 clearfix" wx:if="{{house.hydropower_class}}">
+          <view class="fl">水电类别</view>
+          <view class="fr">{{house.hydropower_class}}</view>
+        </view>
+      </block>
       <view class="box detail detail30 " bindtap="showMore">
         <text>{{show_detail?'收起':'展开显示更多'}}</text>
       </view>
       <view class="reg clearfix " bindtap="toRegister" data-type="2" data-houseid="{{house.id}}">
-        <image src="/../../../utils/images/notification.png" ></image>
+        <image src="/../../../utils/images/notification.png"></image>
         <text> 降价、活动、优惠通知我</text>
       </view>
     </view>
   </view>
-  <view class="row row6" wx:if="{{hasRoom}}">
+  <view class="row row6" wx:if="{{rooms}}">
     <view class="boxs">
       <view class="box box1 title">
         楼盘户型图
       </view>
       <view class="box box2">
         <view wx:for="{{rooms}}" wx:key="id2" wx:for-item="room" class="room">
-          <view class="room-area">{{room.Habitable}} {{room.Area}}平(建筑面积)</view>
-          <view class="room-price">价格: {{room.Price}}</view>
-          <image mode="aspectFit" src="{{room.PhotoCoverUrl}}" bindtap="toRoomPhotoPage" />
+          <view class="room-area">{{room.habitable}} {{room.area}}平(建筑面积)</view>
+          <view class="room-price">价格: {{room.price}}</view>
+          <image mode="aspectFit" src="{{room.photo_cover}}" bindtap="toRoomPhotoPage" />
         </view>
       </view>
     </view>
   </view>
-  <view class="row row5">
+  <view class="row row5" wx:if="{{photo_types}}">
     <view class="boxs">
       <view class="box box1 title">
         楼盘相册
       </view>
       <view class="box box2">
         <swiper>
-          <block wx:for="{{type_keys}}" wx:key="id1" wx:for-item="type_page">
+          <block wx:for="{{photo_types}}" wx:key="id1" wx:for-item="type_page">
             <swiper-item class="type-page">
-              <block wx:for="{{type_page}}" wx:key="id2" wx:for-item="type_key">
+              <block wx:for="{{type_page}}" wx:key="id2" wx:for-index="type_name" wx:for-item="cover_url">
                 <view class="type-item" bindtap="changeType">
-                  <image class="type-item-img" mode="aspectFill" src="{{photos[type_key].data[0].url}}" bindtap="toPhotoPage" data-id="{{type_key}}" />
-                  <view class="type-item-name">{{photos[type_key].name}}</view>
+                  <image class="type-item-img" mode="aspectFill" src="{{cover_url}}" bindtap="toPhotoPage" data-id="{{type_key}}" />
+                  <view class="type-item-name">{{type_name}}</view>
                   <view class="type-item-bg"></view>
                 </view>
               </block>
@@ -170,19 +168,16 @@
       </view>
     </view>
   </view>
-
-    <view class="row row7" >
-      <view class="boxs">
-          <view class="box box1" bindtap="toRegister" data-type="3" data-houseid="{{house.id}}">
-            预约看房
-          </view>
-          <view class="box box2" bindtap="call">
-            电话咨询
-          </view>
+  <view class="row row7">
+    <view class="boxs">
+      <view class="box box1" bindtap="toRegister" data-type="3" data-houseid="{{house.id}}">
+        预约看房
+      </view>
+      <view class="box box2" bindtap="call">
+        电话咨询
       </view>
     </view>
-
-    <view class="row row8" >
-      
-    </view>
+  </view>
+  <view class="row row8">
+  </view>
 </view>

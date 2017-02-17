@@ -18,7 +18,6 @@ Page({
     photo_count: 0,
     show_detail: false,
     row1_height: 0,
-    hasRoom: false,
   },
 
 
@@ -72,33 +71,32 @@ Page({
         'content-type': 'application/json'
       },
       success: function (res) {
+        var content = res.data.data;
+
+        console.log(res.data)
+
         that.setData({
-          house: res.data.data,
+          house: content.house_attrs,
+          photo_urls_array: content.photo_urls_array,
+          photos_count: content.photo_urls_array.length,
+          photo_types: content.photo_types,
+          rooms: content.rooms
         })
 
-        // 顶部图片计数
-        var tmp = 0;
-        for (var i in that.data.house.photos) {
-          tmp += that.data.house.photos[i].length;
-        }
-        that.setData({
-          photo_count: tmp,
-        });
-
         // 楼盘描述 HTML -> wxml 转换
-        var description = that.data.house.description;
+        var description = content.house_attrs.description;
 
         description = description.replace(/&quot;/g, ';');
         // 上线时使用
         // WxParse.wxParse('description', 'html', description, that, 15);
 
         // 地图定位标记
-        var arr = gps.GPS.bd_decrypt(res.data.data.lat, res.data.data.lng);
+        var arr = gps.GPS.bd_decrypt(content.house_attrs.lat, content.house_attrs.lng);
         that.setData({
           markers: [{
             iconPath: "/utils/images/location.png",
             id: 0,
-            title: res.data.data.name,
+            title: content.house_attrs.name,
             latitude: arr.lat,
             longitude: arr.lon,
             width: 30,
@@ -111,49 +109,15 @@ Page({
       }
     })
 
-    // 获取照片
-    wx.request({
-      url: app.globalData.siteUrl + '/api/commodity-house/photo',
-      data: {
-        id: options.id
-      },
-      success: function (res) {
-        that.setData({
-          photos: res.data.data.urls,
-          type_keys: res.data.data.type_keys
-        })
-      }
-    })
-
-    // 获取户型图
-    wx.request({
-      url: app.globalData.siteUrl + '/api/commodity-house/room-photo',
-      data: {
-        id: options.id
-      },
-      success: function (res) {
-        // console.log(res.data.data)
-
-        if (res.data.data.length > 0) {
-          that.setData({
-            hasRoom: true,
-            rooms: res.data.data
-          })
-        }
-      }
-    })
-
     // 顶部图片高度计算
     wx.getSystemInfo({
       success: function (res) {
-        console.log(res.windowHeight);
+        // console.log(res.windowHeight);
         that.setData({
           row1_height: res.windowHeight * 0.37
         });
       }
     })
-
-
   },
 
   // "展开显示更多"

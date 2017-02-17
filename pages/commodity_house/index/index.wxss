@@ -8,89 +8,99 @@ view {
   background: #f7f7f7;
 }
 
-.container .row {
+.row {
   margin: 30rpx;
+  width: 100%;
+  margin-top: 0rpx;
 }
 
-.container .row .boxs {
+.row .boxs {
   background: #fff;
-  padding: 0rpx 0;
+  padding: 20rpx 0;
 }
 
-.container .row2 .box {
+.row .box {
+  margin: 0rpx 30rpx;
+}
+
+.row .title {
+  margin-bottom: 20rpx;
+}
+
+.row2 .box {
   margin: 0rpx 30rpx;
   border-bottom: 1rpx solid #eee;
   line-height: 60rpx;
   height: 60rpx;
 }
 
-.container .row1 {
+.row1 {
   width: 100%;
   margin: 0rpx;
   position: relative;
 }
 
-.container .row1 swiper {
+.row1 swiper {
   height: 100%;
 }
 
-.container .row1 image {
+.row1 image {
   width: 100%;
 }
 
-.container .row1 .indicator {
+.row1 .indicator {
   color: #fff;
   position: absolute;
   bottom: 0rpx;
   right: 10rpx;
 }
 
-.container .row2 {
+.row2 {
   width: 100%;
 }
 
-.container .row2 .box1 {
+.row2 .box1 {
   font-size: 40rpx;
   border: 0px;
 }
 
-.container .row2 .box2 {
+.row2 .box2 {
   color: #888;
   font-size: 30rpx;
 }
 
-.container .row2 .box .fl {
+.row2 .box .fl {
   float: left;
 }
 
-.container .row2 .box2 .fl text {
+.row2 .box2 .fl text {
   font-size: 32rpx;
   color: #ffb160;
 }
 
-.container .row2 .box .fr {
+.row2 .box .fr {
   float: right;
 }
 
-.container .row2 .detail .fl {
+.row2 .detail .fl {
   width: 25%;
   color: #bbb;
   font-size: 24rpx;
 }
 
-.container .row2 .detail .fr {
+.row2 .detail .fr {
   width: 75%;
   color: #0f0f0f;
   font-size: 24rpx;
 }
 
-.container .row2 .detail30 {
+.row2 .detail30 {
   color: #bbb;
   font-size: 24rpx;
   text-align: center;
 }
 
-.container .row2 .reg image {
+.row2 .reg image {
   width: 40rpx;
   height: 40rpx;
   margin-top: 10rpx;
@@ -100,101 +110,101 @@ view {
   position: relative;
 }
 
-.container .row2 .reg text {
+.row2 .reg text {
   float: left;
   position: relative;
   left: -140rpx;
 }
 
-.container .row2 .reg {
+.row2 .reg {
   text-align: center;
   font-size: 24rpx;
   color: #ffcf9b;
   line-height: 60rpx;
 }
 
-.container .row2 .box2 {
+.row2 .box2 {
   border: 0px;
 }
 
-.container .row2 .box3 {
+.row2 .box3 {
   border: 0px;
   color: red;
   font-size: 24rpx;
   line-height: 30rpx;
 }
 
-.container .row3 {
+.row3 {
   width: 100%;
   margin-top: 0rpx;
 }
 
-.container .row3 .boxs {
+.row3 .boxs {
   padding: 20rpx 0;
 }
 
-.container .row3 .box {
+.row3 .box {
   margin: 0rpx 30rpx;
 }
 
-.container .row .title {
+.row .title {
   font-size: 32rpx;
   color: #0f0f0f;
   margin-bottom: 20rpx;
 }
 
-.container .row3 .box2 {
+.row3 .box2 {
   display: block;
 }
 
-.container .row3 .box2 .wxParse-image {
+.row3 .box2 .wxParse-image {
   width: 100%;
 }
 
-.container .row3 .box2 .wxParse-p {
+.row3 .box2 .wxParse-p {
   margin-bottom: 20rpx;
   line-height: 20rpx;
 }
 
-.container .row4 {
+.row4 {
   width: 100%;
   margin-top: 0rpx;
 }
 
-.container .row4 .boxs {
+.row4 .boxs {
   padding: 20rpx 0;
 }
 
-.container .row4 .box {
+.row4 .box {
   margin: 0rpx 30rpx;
 }
 
-.container .row4 .title {
+.row4 .title {
   margin-bottom: 20rpx;
 }
 
-.container swiper {
+.row5 swiper {
   height: 100px;
 }
 
-.container .row5 .type-page {
+.row5 .type-page {
   height: 200rpx;
   padding-bottom: 10rpx;
 }
 
-.container .row5 .type-item {
+.row5 .type-item {
   position: relative;
   display: inline-block;
   width: 230rpx;
 }
 
-.container .row5 .type-item-img {
+.row5 .type-item-img {
   display: inline-block;
   width: 200rpx;
   height: 200rpx;
 }
 
-.container .row5 .type-item-name, .container .row5 .type-item-bg {
+.row5 .type-item-name, .row5 .type-item-bg {
   position: absolute;
   bottom: 4rpx;
   left: 0;
@@ -207,18 +217,18 @@ view {
   text-align: center;
 }
 
-.container .row5 .type-item-bg {
+.row5 .type-item-bg {
   z-index: 19;
   background-color: #000;
   opacity: 0.5;
 }
 
-.container .row5 .type-item-name {
+.row5 .type-item-name {
   z-index: 20;
   color: #fff;
 }
 
-.container .row6 {
+.row6 {
   height: 330rpx;
   overflow: hidden;
   padding-bottom: 10rpx;
@@ -226,79 +236,19 @@ view {
   font-size: 14px;
 }
 
-.container .row6 .room {
+.row6 .room {
   display: inline-block;
   width: 230rpx;
   height: 270rpx;
   text-align: center;
 }
 
-.container .row6 image {
+.row6 image {
   width: 230rpx;
   height: 170rpx;
 }
 
-.container .row {
-  width: 100%;
-  margin-top: 0rpx;
-}
-
-.container .row .boxs {
-  padding: 20rpx 0;
-}
-
-.container .row .box {
-  margin: 0rpx 30rpx;
-}
-
-.container .row .title {
-  margin-bottom: 20rpx;
-}
-
-.container .row5 .box2 scroll-view {
-  white-space: nowrap;
-  display: flex;
-  overflow-y: hidden;
-}
-
-.container .row5 .box2 view {
-  display: inline-block;
-  position: relative;
-}
-
-.container .row5 .box2 image {
-  width: 200rpx;
-  height: 200rpx;
-  display: inline-block;
-  margin: 0px 10rpx;
-  overflow: hidden;
-}
-
-.container .row5 .box2 view text {
-  display: inline-block;
-  position: absolute;
-  bottom: 0rpx;
-  left: 0rpx;
-  z-index: 999;
-  text-align: center;
-  width: 100%;
-  color: #fff;
-}
-
-.container .row5 .box2 .bg {
-  display: inline-block;
-  position: absolute;
-  bottom: 0rpx;
-  left: 10rpx;
-  z-index: 998;
-  text-align: center;
-  width: 200rpx;
-  background: #000;
-  height: 36rpx;
-  opacity: 0.3;
-}
-
-.container .row7 {
+.row7 {
   position: fixed;
   bottom: -30rpx;
   background: #fff;
@@ -307,14 +257,14 @@ view {
   line-height: 80rpx;
 }
 
-.container .row7 .boxs {
+.row7 .boxs {
   margin: 0px;
   padding: 0px;
   height: 100%;
   font-size: 40rpx;
 }
 
-.container .row7 .boxs .box {
+.row7 .boxs .box {
   display: inline-block;
   width: 50%;
   text-align: center;
@@ -332,13 +282,13 @@ view {
 }
 
 .row7 .box1 {
-  background-color: #FFB160;
+  background-color: #ffb160;
 }
 
 .row7 .box2 {
-  background-color: #FF4848;
+  background-color: #ff4848;
 }
 
-.container .row8 {
+.row8 {
   height: 60rpx;
 }
